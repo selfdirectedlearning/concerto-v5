@@ -413,6 +413,11 @@ Resources:
             sed -ri 's/^(.*CONCERTO_PASSWORD\s*=).*$/\1${ConcertoPassword}/' docker-compose.yml
             docker-compose up -d concerto
 
+            # TLS
+            wget https://raw.githubusercontent.com/selfdirectedlearning/concerto-v5/master/deploy/docker-compose/tls/install_tls.sh
+            chmod 775 ./install_tls.sh
+            ./install_tls.sh ${DomainName} http://concerto ${Email}
+            
             # Auto check and pull updated (master) image from docker hub and refresh Concerto every 15 minutes
             cd /home/ec2-user
             wget https://raw.githubusercontent.com/selfdirectedlearning/concerto-v5/master/deploy/cf/update_image_rds.sh
@@ -421,10 +426,6 @@ Resources:
             (crontab -u ec2-user -l ; echo "*/15 * * * * /home/ec2-user/update-image.sh") | crontab -u ec2-user -
             cd /home/concerto
 
-            # TLS
-            wget https://raw.githubusercontent.com/selfdirectedlearning/concerto-v5/master/deploy/docker-compose/tls/install_tls.sh
-            chmod 775 ./install_tls.sh
-            ./install_tls.sh ${DomainName} http://concerto ${Email}
           - DBHost: !GetAtt DBInstance.Endpoint.Address
             DBPassword: !Ref DBPassword
             ConcertoPassword: !Ref ConcertoPassword

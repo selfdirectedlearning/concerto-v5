@@ -419,6 +419,7 @@ Resources:
             chmod 775 ./update-image.sh
             (crontab -l ; echo "*/15 * * * * /home/ec2-user/update-image.sh") | crontab -
             (crontab -u ec2-user -l ; echo "*/15 * * * * /home/ec2-user/update-image.sh") | crontab -u ec2-user -
+            cd /home/concerto
 
             # TLS
             wget https://raw.githubusercontent.com/selfdirectedlearning/concerto-v5/master/deploy/docker-compose/tls/install_tls.sh

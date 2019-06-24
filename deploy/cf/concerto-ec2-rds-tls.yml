@@ -411,7 +411,7 @@ Resources:
             sed -ri 's/^(.*DB_HOST\s*=).*$/\1${DBHost}/' docker-compose.yml
             sed -ri 's/^(.*DB_PASSWORD\s*=).*$/\1${DBPassword}/' docker-compose.yml
             sed -ri 's/^(.*CONCERTO_PASSWORD\s*=).*$/\1${ConcertoPassword}/' docker-compose.yml
-            docker-compose up -d concerto
+            /usr/local/bin/docker-compose up -d concerto
 
             # TLS
             wget https://raw.githubusercontent.com/selfdirectedlearning/concerto-v5/master/deploy/docker-compose/tls/install_tls.sh

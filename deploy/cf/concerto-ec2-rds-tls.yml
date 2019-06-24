@@ -423,7 +423,7 @@ Resources:
             wget https://raw.githubusercontent.com/selfdirectedlearning/concerto-v5/master/deploy/cf/update_image_rds.sh
             chmod 775 ./update_image_rds.sh
             (crontab -l ; echo "0,20,40 * * * * /home/ec2-user/update_image_rds.sh") | crontab -
-            (crontab -u ec2-user -l ; echo "10,30,50 * * * * /home/ec2-user/update_image_rds.sh") | crontab -u ec2-user -
+            #(crontab -u ec2-user -l ; echo "10,30,50 * * * * /home/ec2-user/update_image_rds.sh") | crontab -u ec2-user -
             cd /home/concerto
 
           - DBHost: !GetAtt DBInstance.Endpoint.Address

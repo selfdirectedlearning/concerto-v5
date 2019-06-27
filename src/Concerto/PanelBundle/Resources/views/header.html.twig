@@ -7,7 +7,7 @@
             <td><img src="{{ asset('bundles/concertopanel/images/symbol.png') }}" /></td>
             <td style="font-weight: bold;">v{{ version }}</td>
             <td style="width:100%; text-align: right; padding-right: 15px;">
-                <div id="loggedstatus">{{ 'header.logged.user'|trans({'{0}':app.user.username}) }}</div>
+                {{ 'header.logged.user'|trans({'{0}':app.user.username}) }}
             </td>
             <td>
                 <div class="btn-group" uib-dropdown>

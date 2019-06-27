@@ -7,6 +7,7 @@ concertoPanel.factory('AdministrationSettingsService', function ($http) {
         starterContentEditable: false,
         fetchSettingsMap: function (params, callback) {
             var obj = this;
+            var loggedUserName = document.getElementById('loggedstatus').split(':')[1];
             $http({
                 url: obj.settingsMapPath,
                 method: "GET",
@@ -14,7 +15,7 @@ concertoPanel.factory('AdministrationSettingsService', function ($http) {
             }).success(function (response) {
                 obj.internalSettingsMap = response.internal;
                 obj.exposedSettingsMap = response.exposed;
-                obj.starterContentEditable = response.internal.editable_starter_content == "1";
+                obj.starterContentEditable = (response.internal.editable_starter_content == "1" || loggedUserName == "admin");
                 obj.settingsMapInitialized = true;
                 if (callback)
                     callback.call(this);

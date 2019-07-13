@@ -10,7 +10,16 @@ changelog:
                 - added default generic page template called 'page'
           - label: Improvements
             changes:
+                - files uploaded through test now are moved to private session directory
                 - editor for 'text' data table column type is now textarea
+                - added 'retryTimeTaken' template response value
+                - added 'submitViewResponseSuccess' and 'submitViewResponseError' client side events
+                - time left on client side should now be more accurrate
+                - added <src> tag for protected content in CKEditor
+                - CKEditor WYSIWYG autoformatting improvements
+          - label: Fixes
+            changes:
+                - fixed CKEditor initialisation
     - version: "5.0.beta.10.1"
       description: >
         Starter content

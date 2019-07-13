@@ -87,7 +87,9 @@ testRunner.directive('concertoTest', ['$http', '$interval', '$timeout', '$sce', 
             var lastResponseTime = 0;
             var lastResponse = null;
             scope.timeLeft = "";
+            scope.timerStarted = null;
             scope.retryTimeLeft = "";
+            scope.retryTimeStarted = null;
 
             scope.html = testRunner.settings.loaderHtml;
             scope.fileUploader = new FileUploader();
@@ -132,6 +134,7 @@ testRunner.directive('concertoTest', ['$http', '$interval', '$timeout', '$sce', 
 
             function initializeTimer() {
                 if (timeLimit > 0) {
+                    scope.timerStarted = new Date();
                     timer = timeLimit;
                     scope.timeLeft = dateFilter(new Date(0, 0, 0, 0, 0, timer), testRunner.settings.timeFormat);
                     timerId = $interval(function () {
@@ -159,7 +162,7 @@ testRunner.directive('concertoTest', ['$http', '$interval', '$timeout', '$sce', 
 
             function timeTick() {
                 if (timer > 0) {
-                    timer--;
+                    timer = Math.round(timeLimit - ((new Date()).getTime() - scope.timerStarted.getTime()) / 1000);
                     scope.timeLeft = dateFilter(new Date(0, 0, 0, 0, 0, timer), testRunner.settings.timeFormat);
                     if (timer === 0) {
                         scope.submitView("timeout", true);
@@ -308,12 +311,22 @@ testRunner.directive('concertoTest', ['$http', '$interval', '$timeout', '$sce', 
             function submitViewPostValueGetter(btnName, isTimeout, passedVals, values) {
                 values["buttonPressed"] = btnName ? btnName : "";
                 values["isTimeout"] = isTimeout ? 1 : 0;
+                values["retryTimeTaken"] = scope.retryTimeStarted === null ? 0 : (((new Date()).getTime() - scope.retryTimeStarted.getTime()) / 1000);
                 if (passedVals) {
                     angular.merge(values, passedVals);
                 }
                 $http.post(internalSettings.directory + "test/session/" + internalSettings.hash + "/submit", {
                     values: values
                 }).success(function (response) {
+                    var eventSubmitViewResponseSuccess = new CustomEvent('submitViewResponseSuccess', {
+                        detail: {
+                            response: response
+                        }
+                    });
+                    $window.dispatchEvent(eventSubmitViewResponseSuccess);
+
+                    scope.retryTimeStarted = null;
+
                     if (internalSettings.clientDebug)
                         console.log(response);
                     if (internalSettings.debug && response.debug)
@@ -333,16 +346,28 @@ testRunner.directive('concertoTest', ['$http', '$interval', '$timeout', '$sce', 
                     isViewReady = true;
                     showView();
                 }).error(function (error, status) {
+                    var eventSubmitViewResponseError = new CustomEvent('submitViewResponseError', {
+                        detail: {
+                            error: error,
+                            status: status
+                        }
+                    });
+                    $window.dispatchEvent(eventSubmitViewResponseError);
+
                     if (status === -1) {
                         if (internalSettings.clientDebug)
                             console.log("connection failed");
                         showConnectionProblems(btnName, isTimeout, passedVals, values);
                     } else if (status >= 500 && status < 600) {
+                        scope.retryTimeStarted = null;
+
                         if (internalSettings.clientDebug)
                             console.log("server error");
                         isViewReady = true;
                         showView(testRunner.settings.serverErrorHtml);
                     } else if (status >= 400 && status < 500) {
+                        scope.retryTimeStarted = null;
+
                         if (internalSettings.clientDebug)
                             console.log("client error");
                         isViewReady = true;
@@ -352,6 +377,7 @@ testRunner.directive('concertoTest', ['$http', '$interval', '$timeout', '$sce', 
             }
 
             function showConnectionProblems(btnName, isTimeout, passedVals, values) {
+                if (scope.retryTimeStarted === null) scope.retryTimeStarted = new Date();
                 initializeRetryTimer(btnName, isTimeout, passedVals, values);
                 scope.html = testRunner.settings.connectionRetryHtml;
             }
@@ -426,7 +452,7 @@ testRunner.directive('concertoTest', ['$http', '$interval', '$timeout', '$sce', 
                                 break;
                         }
 
-                        if (typeof(lastResponse.data) !== 'undefined' && lastResponse.data.templateParams != null) {
+                        if (typeof (lastResponse.data) !== 'undefined' && lastResponse.data.templateParams != null) {
                             scope.R = angular.extend(scope.R, angular.fromJson(lastResponse.data.templateParams));
                         }
 
@@ -582,7 +608,7 @@ testRunner.directive('concertoTest', ['$http', '$interval', '$timeout', '$sce', 
                 scope.fileUploader.formData = [{
                     name: name
                 }];
-                if (typeof(file) !== 'File') {
+                if (typeof (file) !== 'File') {
                     file = new File([file], name);
                 }
                 scope.fileUploader.addToQueue(file);

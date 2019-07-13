@@ -67,6 +67,7 @@ class StartForkerCommand extends Command
         $output->writeln("starting forker...");
 
         $cmd = $this->getCommand();
+        $output->writeln($cmd);
         $process = new Process($cmd);
         $env = array(
             "R_GC_MEM_GROW" => 0

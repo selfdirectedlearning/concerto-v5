@@ -18,7 +18,7 @@ switch(concerto$connectionParams$driver,
 
 #fifo_path = commandArgs(TRUE)[1]
 
-concerto.log("starting listener")
+concerto.log("starting listener", "forker.R")
 queue = c()
 unlink(paste0(commandArgs(TRUE)[1],"*.fifo"))
 while (T) {
@@ -34,7 +34,7 @@ while (T) {
         next
     }
     con = fifo(fpath, blocking=TRUE, open="rt")
-    concerto.log("incoming session request")
+    concerto.log("incoming session request", "forker.R")
     response = readLines(con, warn = FALSE, n = 1, ok = FALSE)
     response = tryCatch({
         fromJSON(response)
@@ -48,7 +48,7 @@ while (T) {
     message(response$sessionId)
     mcparallel({
         sink(file = response$rLogPath, append = TRUE, type = "output", split = FALSE)
-        concerto.log("starting session")
+        concerto.log("starting session", "forker.R")
         rm(queue)
         rm(fpath)
         rm(con)
@@ -66,4 +66,4 @@ while (T) {
         )
     }, detached = TRUE)
 }
-concerto.log("listener closing")
+concerto.log("listener closing", "forker.R")

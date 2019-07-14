@@ -1,6 +1,6 @@
 concerto.init = function(connectionParams, publicDir, mediaUrl, maxExecTime, maxIdleTime, keepAliveToleranceTime, runnerType = 0){
     options(digits.secs = 6)
-    concerto.log("starting session")
+    concerto.log("starting session", ".init")
     if(Sys.info()['sysname'] != "Windows") {
         options(encoding='UTF-8')
         Sys.setlocale("LC_ALL","en_US.utf8")

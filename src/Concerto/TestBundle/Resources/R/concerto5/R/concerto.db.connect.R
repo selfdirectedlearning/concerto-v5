@@ -1,5 +1,5 @@
 concerto.db.connect = function(driver, username, password, dbname, host, unix_socket, port){
-    concerto.log(paste0("connecting with db using ",driver))
+    concerto.log(paste0("connecting with db using ",driver), ".db.connect")
     con = NULL
     if (driver == "pdo_mysql") {
         require("RMySQL")

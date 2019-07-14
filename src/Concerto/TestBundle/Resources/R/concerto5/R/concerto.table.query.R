@@ -3,7 +3,7 @@ function(sql, params=list(), n=-1){
   sql <- gsub("^\\s+|\\s+$", "", sql)
   sql <- concerto.table.insertParams(sql, params)
 
-  concerto.log(sql)
+  concerto.log(sql, ".table.query: sql")
 
   result <- NULL
   output <- NULL

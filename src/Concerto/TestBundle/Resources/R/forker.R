@@ -33,9 +33,11 @@ while (T) {
         Sys.sleep(0.25)
         next
     }
+    concerto.log(fpath, "forker.R ▶ while(T) : fpath")
     con = fifo(fpath, blocking=TRUE, open="rt")
-    concerto.log("incoming session request", "forker.R ▶")
+    concerto.log("incoming session request", "forker.R ▶ while(T)")
     response = readLines(con, warn = FALSE, n = 1, ok = FALSE)
+    concerto.log(unlist(response), "forker.R ▶  while(T)>readLines : response")
     response = tryCatch({
         fromJSON(response)
     }, error = function(e) {
@@ -43,6 +45,7 @@ while (T) {
         message(response)
         q("no", 1)
     })
+    concerto.log(unlist(response), "forker.R ▶  while(T)>tryCatch : response")
     close(con)
     unlink(fpath)
     message(response$sessionId)
@@ -55,6 +58,7 @@ while (T) {
 
         concerto$lastSubmitTime <- as.numeric(Sys.time())
         concerto$lastKeepAliveTime <- as.numeric(Sys.time())
+        concerto.log(unlist(response), "forker.R ▶ response to be passed to .run")
         concerto5:::concerto.run(
             workingDir = response$workingDir,
             client = response$client,

@@ -1,5 +1,5 @@
 concerto.session.unserialize <- function(response = NULL, hash = NULL){
-    concerto.log("unserializing session...", ".unserialize")
+    concerto.log("unserializing session...", ".unserialize ▶")
 
     sessionFileName = concerto$sessionFile
     if(!is.null(hash)) {
@@ -7,11 +7,11 @@ concerto.session.unserialize <- function(response = NULL, hash = NULL){
     }
 
     if(!file.exists(sessionFileName)) {
-        concerto.log(sessionFileName, ".unserialize: session file not found")
+        concerto.log(sessionFileName, ".unserialize: session file not found ▶")
         return(F)
     }
 
-    concerto.log(sessionFileName, ".unserialize")
+    concerto.log(sessionFileName, ".unserialize ▶")
 
     con = file(sessionFileName, open="rb")
     prevConcerto = unserialize(con)
@@ -25,7 +25,7 @@ concerto.session.unserialize <- function(response = NULL, hash = NULL){
     concerto$lastKeepAliveTime <<- prevConcerto$lastKeepAliveTime
     concerto$bgWorkers <<- prevConcerto$bgWorkers
 
-    concerto.log("session unserialized", ".unserialize")
+    concerto.log("session unserialized", ".unserialize ▶")
 
     #non submit resume
     if(is.null(response) && concerto$runnerType == RUNNER_SERIALIZED) {
@@ -46,7 +46,7 @@ concerto.session.unserialize <- function(response = NULL, hash = NULL){
         concerto$lastKeepAliveTime <<- as.numeric(Sys.time())
         result = list()
         if(!is.null(response$values$bgWorker) && response$values$bgWorker %in% ls(concerto$bgWorkers)) {
-            concerto.log(paste0("running worker: ", response$values$bgWorker), ".unserialize: (response$values$bgWorker)")
+            concerto.log(paste0("running worker: ", response$values$bgWorker), ".unserialize ▶ (showing response$values$bgWorker)")
             result = do.call(concerto$bgWorkers[[response$values$bgWorker]], list(response=response$values))
         }
         concerto5:::concerto.server.respond(RESPONSE_WORKER, result)

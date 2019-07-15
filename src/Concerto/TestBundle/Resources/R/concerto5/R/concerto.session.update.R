@@ -1,5 +1,5 @@
 concerto.session.update = function(){
-  concerto.log("updating session...", ".update")
+  concerto.log("updating session...", ".update ▶")
 
   sql = sprintf("UPDATE TestSession SET
     status = '%s',

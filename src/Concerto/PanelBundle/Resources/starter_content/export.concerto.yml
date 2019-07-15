@@ -24,7 +24,7 @@ collection:
         --header-bg: #4581b5;
         --header-color: #ffffff;
       }
-      
+
       .body {
         min-height: 100vh;
         position: relative;
@@ -34,13 +34,13 @@ collection:
         display: flex;
         flex-direction: column;
       }
-      
+
       .container {
         max-width: 1000px;
         margin: auto;
         padding: 20px;
       }
-      
+
       .main-btn {
         background-color: var(--accent-light-color);
         border: none;
@@ -58,42 +58,42 @@ collection:
         transition-property: background-color;
         outline: none;
       }
-      
+
       .main-btn:hover {
         background-color: var(--accent-dark-color);
       }
-      
+
       .main-btn:disabled {
         background-color: var(--option-hover-bg);
         color: #ccc;
         cursor: default;
       }
-      
+
       .left-btn {
         margin: 0 auto 0 0;
       }
-      
+
       .right-btn {
         margin: 0 0 0 auto;
       }
-      
+
       .question-footer {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         margin-top: 20px;
       }
-      
+
       .question-page {
         font-size: 14px;
         padding: 10px 0;
       }
-      
+
       @media screen and (max-width: 500px) {
         .question-text {
           font-size: 14px;
         }
-      
+
         .main-btn {
           min-width: 0;
         }
@@ -102,18 +102,18 @@ collection:
     html: |
       <div class="body">
       	{{template:header}}
-      
+
       	<div class="questions">
       		<div class="container">
-      
+
       			{{content}}
-      
+
       			<div class="question-footer">
       				<button class="main-btn right-btn" id="submitButton" name="next">Next</button>
       			</div>
       		</div>
       	</div>
-      
+
       	{{template:footer}}
       </div>
     groups: ''
@@ -132,31 +132,31 @@ collection:
           display: flex;
           justify-content: center;
       }
-      
+
       .pain-mannequin-front {
           display: flex;
           justify-content: flex-end;
           width: 600px;
       }
-      
+
       .pain-mannequin-back {
           display: flex;
           justify-content: flex-start;
           width: 600px;
       }
-      
+
       .pain-mannequin-svg {
           position: relative;
           width: 400px;
       }
-      
+
       @media screen and (max-width: 1200px) {
           .pain-mannequin {
               flex-direction: column;
               align-items: center;
           }
       }
-      
+
       /* SVG */
       .st0, .st1 {
           fill: #FF0000;
@@ -166,26 +166,26 @@ collection:
           stroke-width: 2;
           stroke-linecap:round;
       }
-      
+
       .st2 {
           fill: none;
           stroke: #FF0000;
           stroke-linecap: round;
           stroke-width: 2;
       }
-      
+
       svg circle, svg line {
           pointer-events: none;
       }
-      
+
       .highlighted {
           fill-opacity: 0.07 !important;
       }
-      
+
       .hovered {
           fill-opacity: 0.1 !important;
       }
-      
+
       .pain-mannequin h3 {
           margin: 0;
           position: absolute;
@@ -193,7 +193,7 @@ collection:
           left: 47px;
           pointer-events: none;
       }
-      
+
       /* MARKS AND NOTES */
       .mark {
           position: absolute;
@@ -201,7 +201,7 @@ collection:
           height: 16px;
           cursor: pointer;
       }
-      
+
       .mark-icon {
           position: absolute;
           width: 31.5px;
@@ -215,7 +215,7 @@ collection:
           margin: auto 50%;
           transform: translate(-50%);
       }
-      
+
       .mark-content {
           position: absolute;
           left: 20px;
@@ -230,11 +230,11 @@ collection:
           box-shadow: 0 0 22px -4px rgba(0,0,0,0.75);
           width: 220px;
       }
-      
+
       .active .mark-content {
           display: block;
       }
-      
+
       .mark-hide, .mark-delete {
           width: 22px;
           height: 22px;
@@ -244,21 +244,21 @@ collection:
           border-radius: 3px;
           border: 1px solid transparent;
       }
-      
+
       .mark-hide:hover, .mark-delete:hover {
           border-color: grey;
           cursor: pointer;
       }
-      
+
       .mark-hide {
           right: 27px;
       }
-      
+
       .mark-hide img, .mark-delete img {
           width: 100%;
           pointer-events: none;
       }
-      
+
       .mark-handle {
           position: absolute;
           width: 30px;
@@ -272,17 +272,17 @@ collection:
           background-size: 14px;
           background-position: center;
       }
-      
+
       .mark-handle:hover {
           cursor: move;
       }
-      
+
       .mark-range {
           width: calc(100% - 10px);
           display: block;
           padding: 0;
       }
-      
+
       .mark textarea {
           margin: 15px auto 4px;
           width: calc(100% - 10px);
@@ -292,18 +292,18 @@ collection:
           outline: none;
           resize: none;
       }
-      
+
       .mark label {
           font-size: 14px;
           margin-top: 10px;
           display: block;
       }
-      
+
       .mark-name {
           text-transform: capitalize;
           font-size: 14px;
       }
-      
+
     js: |
       testRunner.compileProvider.component('itemPainMannequin', {
         templateUrl: testRunner.settings.directory + "ViewTemplate/itemPainMannequin/content?css=1,html=1",
@@ -313,11 +313,11 @@ collection:
           responseRequired: '<'
         },
         controller: function controller($scope, $timeout) {
-      
+
           $scope.item = this.item;
           $scope.response = this.response;
           $scope.responseRequired = this.responseRequired;
-      
+
           $scope.reportFront = [];
           $scope.reportBack = [];
           if($scope.response.value) {
@@ -325,9 +325,9 @@ collection:
             $scope.reportFront = pastResponse.reportFront;
             $scope.reportBack = pastResponse.reportBack;
           }
-      
+
           $scope.gender = $scope.item.responseOptions.painMannequinGender;
-          if($scope.gender == "custom") { 
+          if($scope.gender == "custom") {
             $scope.gender = $scope.item.responseOptions.painMannequinGenderValue;
           }
           $scope.bodyParts = [
@@ -636,11 +636,11 @@ collection:
               label: 'right heel'
             },
           ];
-      
+
           $scope.activeMark = null;
-      
+
           let timeout;
-      
+
           function loadData() {
             if ($(".i" + $scope.item.id + "-" + $scope.gender + "-svg path").length > 0) {
               setEvents();
@@ -648,7 +648,7 @@ collection:
               timeout = $timeout(loadData, 100);
             }
           }
-      
+
           function setEvents() {
             $('.i' + $scope.item.id + '-pain-mannequin path')
               .on('click', function (e) {
@@ -673,7 +673,7 @@ collection:
               }
             );
           }
-      
+
           function addNote(timeStamp, top, left, id, source) {
             let area;
             for (let i = 0; i < $scope.bodyParts.length; i++) {
@@ -682,7 +682,7 @@ collection:
                 break;
               }
             }
-      
+
             let mark = {
               area: area,
               description: '',
@@ -692,7 +692,7 @@ collection:
               x: left,
               y: top,
             };
-      
+
             if (source === 'front') {
               $scope.reportFront.push(mark);
               $scope.activeMark = 'front-' + $scope.reportFront.length;
@@ -700,12 +700,12 @@ collection:
               $scope.reportBack.push(mark);
               $scope.activeMark = 'back-' + $scope.reportBack.length;
             }
-      
+
             $scope.$apply();
-      
+
             $('.mark-content').draggable({handle: '.mark-handle', containment: 'body'});
           }
-      
+
           $scope.getBgColor = function (intensity) {
             let bgColor;
             if (intensity <= 10) {
@@ -731,15 +731,15 @@ collection:
             }
             return bgColor;
           };
-      
+
           $scope.activateMark = function (mark) {
             $scope.activeMark = $scope.activeMark !== mark ? mark : null;
           };
-      
+
           $scope.hideMark = function () {
             $scope.activeMark = null;
           };
-      
+
           $scope.deleteMark = function (markIndex, source) {
             $scope.activeMark = null;
             let id, hasSiblings;
@@ -762,14 +762,14 @@ collection:
                 }
               }
             }
-      
+
             if (!hasSiblings) {
               $("#i" + $scope.item.id + '-' + id).removeClass('highlighted');
             }
           };
-      
+
           loadData();
-      
+
           testRunner.addExtraControl("r" + $scope.item.id, function () {
             return JSON.stringify({
               reportFront: $scope.reportFront,
@@ -873,7 +873,7 @@ collection:
       <circle class="st1" cx="462.7" cy="325.6" r="5.2"/-->
       				<line class="st1" x1="385.8" x2="412.3" y1="153.5" y2="153.5"></line>
       			</svg>
-      
+
       			<div class="mark" ng-class="{'active': activeMark === 'front-' + (markIndex + 1)}" ng-repeat="(markIndex, mark) in reportFront" ng-style="{'top': mark.y + 'px', 'left': mark.x + 'px'}">
       				<div class="mark-icon" ng-click="activateMark('front-' + (markIndex + 1))" ng-style="{'width': (mark.size - 1) / 2 + 6 + 'px', 'height': (mark.size - 1) / 2 + 6 + 'px', 'background-color': getBgColor(mark.intensity)}">
       				</div>
@@ -889,7 +889,7 @@ collection:
       					<textarea ng-model="mark.description" placeholder="Description" rows="6"></textarea>
       				</div>
       			</div>
-      
+
       		</div>
       	</div>
       	<div class="pain-mannequin-back">
@@ -977,7 +977,7 @@ collection:
       				<path class="st1" d="M501,1238.2c0,0-19.7,7.1-49.4,0l-0.2,0c0,2.8,0.3,5.6,0.8,8.8c1,7.4,0.6,16.8,0.5,23.6c-0.1,3.9-2,10.9-2.5,17.4v-0.3c-0.4,4.7,0,9.1,2.4,12c6.4,7.7,13,10,25.9,7c9.1-2.2,15.3-6.9,18.9-10.1v-0.2c0.5-0.5,1-0.9,1.4-1.3c0.8-0.7,1.3-1.3,1.7-1.6c2.1-1.8,15.4-5.5,20.6-7.2c5.3-1.8,7-6.9,7.4-9.8c0.3-2.9,0.5-2.6,1.8-5.6c1.3-3-5-7.2-5.8-7.2s-1.9,0-1.9-1.4c0-1.4-3.5-4.2-5-4.2s-2.9-1-3.4-2.4c-0.5-1.4-6.4-3.7-8.5-3.4c-2,0.3-1.6-0.5-3.4-1.9l0,0c-0.1-0.1-0.2-0.1-0.3-0.2c-1.4-1-1.6-6-1.6-11.8L501,1238.2z" id="i[[item.id]]-76"></path>
       				<path class="st1" d="M386.9,632.9c11.3,6.5,10.7,15.8,10.7,15.8h0c0,0-0.6-9.3,10.7-15.8"></path>
       			</svg>
-      
+
       			<div class="mark" ng-class="{'active': activeMark === 'back-' + (markIndex + 1)}" ng-repeat="(markIndex, mark) in reportBack" ng-style="{'top': mark.y + 'px', 'left': mark.x + 'px'}">
       				<div class="mark-icon" ng-click="activateMark('back-' + (markIndex + 1))" ng-style="{'width': (mark.size - 1) / 2 + 6 + 'px', 'height': (mark.size - 1) / 2 + 6 + 'px', 'background-color': getBgColor(mark.intensity)}">
       				</div>
@@ -1013,15 +1013,15 @@ collection:
         display: flex;
         justify-content: center;
       }
-      
+
       .question-choices.vertical {
         flex-direction: column;
       }
-      
+
       .question-choices.vertical .question-choice {
         flex-basis: auto;
       }
-      
+
       .question-choice {
         background-color: var(--option-bg);
         text-align: center;
@@ -1036,37 +1036,37 @@ collection:
         align-items: center;
         font-size: 14px;
       }
-      
+
       .question-choice:hover {
         background-color: var(--option-hover-bg);
         border: 3px solid var(--option-hover-bg);
       }
-      
+
       .question-choice.selected {
         border: 3px solid var(--accent-light-color);
       }
-      
+
       .question-choice.unselected {
         background-color: var(--option-unselected-bg);
         color: var(--error-color);
         border: 3px solid var(--option-unselected-bg);
       }
-      
+
       .question-choice img, .question-text img {
         max-width: 100%;
         display: block;
       }
-      
+
       @media screen and (max-width: 500px) {
         .question-choice {
           padding: 2px;
           font-size: 12px;
         }
-      
+
         .question-choices.vertical-mobile {
           flex-direction: column;
         }
-      
+
         .question-choices.vertical-mobile .question-choice {
           flex-basis: auto;
         }
@@ -1083,7 +1083,7 @@ collection:
           $scope.item = this.item;
           $scope.response = this.response;
           $scope.responseRequired = this.responseRequired;
-      
+
           $scope.selectResponse = function(option) {
             $scope.response.value = option.response;
           }
@@ -1111,7 +1111,7 @@ collection:
       .question-input {
         margin-bottom: 20px;
       }
-      
+
       .question-input input {
         display: block;
         background-color: var(--option-bg);
@@ -1123,7 +1123,7 @@ collection:
         box-sizing: border-box;
         text-align: center;
       }
-      
+
       .question-input input:hover {
         background-color: var(--option-hover-bg);
       }
@@ -1163,12 +1163,12 @@ collection:
         justify-content: space-evenly;
         margin: 30px auto;
       }
-      
+
       .gbs-row {
         display: flex;
         align-items: center;
       }
-      
+
       .gbs-input {
         border: 1px solid #000;
         width: 33px;
@@ -1179,35 +1179,35 @@ collection:
         padding: 3px 2px 0;
         font-size: 20px;
       }
-      
+
       .gbs-row:not(:first-child) .gbs-input {
         border-top: none;
       }
-      
+
       .gbs-input:not(.selected) {
         background-color: #fff !important;
       }
-      
+
       .gbs-value {
         width: 18px;
         text-align: right;
       }
-      
+
       .gbs-label {
         text-transform: uppercase;
         position: absolute;
         right: 0;
         width: 200px;
       }
-      
+
       .gbs-input i {
         display: none;
       }
-      
+
       .gbs-input.selected i {
         display: inline-block;
       }
-      
+
       .gbs-item-content {
         position: relative;
         width: 275px;
@@ -1218,7 +1218,7 @@ collection:
           return items.slice().reverse();
         };
       });
-      
+
       testRunner.compileProvider.component('itemGracelyScale', {
         templateUrl: testRunner.settings.directory + "ViewTemplate/itemGracelyScale/content?css=1,html=1",
         bindings: {
@@ -1227,11 +1227,11 @@ collection:
           responseRequired: '<'
         },
         controller: function controller($scope) {
-      
+
           $scope.item = this.item;
           $scope.response = this.response;
           $scope.responseRequired = this.responseRequired;
-      
+
           $scope.intensityOptions = {
             options: [
               {
@@ -1374,7 +1374,7 @@ collection:
               },
             ],
           };
-      
+
           $scope.unpleasantnessOptions = {
             options: [
               {
@@ -1517,24 +1517,24 @@ collection:
               },
             ],
           };
-      
+
           $scope.intensity;
           $scope.unpleasantness;
-      
+
           if($scope.response.value) {
             let pastResponse = JSON.parse($scope.response.value);
             $scope.intensity = pastResponse.intensity;
             $scope.unpleasantness = pastResponse.unpleasantness;
           }
-      
+
           $scope.selectIntensity = function (value) {
             $scope.intensity = value;
           };
-      
+
           $scope.selectUnpleasantness = function (value) {
             $scope.unpleasantness = value;
           };
-      
+
           testRunner.addExtraControl("r" + $scope.item.id, function () {
             return JSON.stringify({
               intensity: $scope.intensity,
@@ -1555,13 +1555,13 @@ collection:
       				</div>
       				<div class="gbs-input" ng-class="{selected: intensity === option.value}" ng-click="selectIntensity(option.value)" ng-style="{'background-color': option.bgColor}"></div>
       			</div>
-      
+
       			<div class="gbs-label" ng-repeat="label in intensityOptions.labels" ng-style="{bottom: label.bottom}">
       				[[label.text]]
       			</div>
       		</div>
       	</div>
-      
+
       	<div class="gbs-item">
       		<h2>Unpleasantness</h2>
       		<input name="unpleasantness" ng-model="unpleasantness" type="hidden" />
@@ -1572,7 +1572,7 @@ collection:
       				</div>
       				<div class="gbs-input" ng-class="{selected: unpleasantness === option.value}" ng-click="selectUnpleasantness(option.value)" ng-style="{'background-color': option.bgColor}"></div>
       			</div>
-      
+
       			<div class="gbs-label" ng-repeat="label in unpleasantnessOptions.labels" ng-style="{bottom: label.bottom}">
       				[[label.text]]
       			</div>
@@ -1602,7 +1602,7 @@ collection:
         box-sizing: border-box;
         resize: vertical;
       }
-      
+
       form input:hover {
         background-color: var(--option-hover-bg);
       }
@@ -1616,7 +1616,7 @@ collection:
         controller: function controller($scope) {
           $scope.field = this.field;
           $scope.values = this.values;
-      
+
           $scope.getValidator = function (type) {
             if (typeof this.field.validation === 'undefined') return null;
             for (var i = 0; i < this.field.validation.length; i++) {
@@ -1658,16 +1658,16 @@ collection:
         outline: none;
         background-image: none;
       }
-      
+
       select:hover {
         background-color: var(--option-hover-bg);
         cursor: pointer;
       }
-      
+
       .select {
         position: relative;
       }
-      
+
       .select:after {
         position: absolute;
         content: "";
@@ -1689,7 +1689,7 @@ collection:
         controller: function controller($scope) {
           $scope.field = this.field;
           $scope.values = this.values;
-      
+
           $scope.getValidator = function (type) {
             if (typeof this.field.validation === 'undefined') return null;
             for (var i = 0; i < this.field.validation.length; i++) {
@@ -1704,7 +1704,7 @@ collection:
       });
     html: |
       <div class="form-label">[[field.label]]<span ng-if="getValidator('required')">*</span></div>
-      
+
       <div class="select">
           <select name="[[field.name]]" ng-model="values[field.name]" ng-required="getValidator('required')">
               <option value="" disabled selected hidden></option>
@@ -1734,7 +1734,7 @@ collection:
         box-sizing: border-box;
         resize: vertical;
       }
-      
+
       form input:hover {
         background-color: var(--option-hover-bg);
       }
@@ -1748,7 +1748,7 @@ collection:
         controller: function controller($scope) {
           $scope.field = this.field;
           $scope.values = this.values;
-      
+
           $scope.getValidator = function (type) {
             if (typeof this.field.validation === 'undefined') return null;
             for (var i = 0; i < this.field.validation.length; i++) {
@@ -1797,7 +1797,7 @@ collection:
         controller: function controller($scope) {
           $scope.field = this.field;
           $scope.values = this.values;
-      
+
           $scope.getValidator = function (type) {
             if (typeof this.field.validation === 'undefined') return null;
             for (var i = 0; i < this.field.validation.length; i++) {
@@ -1838,7 +1838,7 @@ collection:
         width: 100%;
         max-width: max-content;
       }
-      
+
       .checkbox-label input {
         position: absolute;
         opacity: 0;
@@ -1846,7 +1846,7 @@ collection:
         top: 0;
         left: 0;
       }
-      
+
       .check-mark {
         position: absolute;
         top: 1px;
@@ -1857,26 +1857,26 @@ collection:
         border: 2px solid #cccccc;
         box-sizing: border-box;
       }
-      
+
       .checkbox-label:hover input ~ .check-mark {
         background-color: var(--option-bg);
       }
-      
+
       .checkbox-label input:checked ~ .check-mark {
         background-color: var(--accent-light-color);
         border: none;
       }
-      
+
       .check-mark:after {
         content: "";
         position: absolute;
         display: none;
       }
-      
+
       .checkbox-label input:checked ~ .check-mark:after {
         display: block;
       }
-      
+
       .checkbox-label .check-mark:after {
         left: 6px;
         top: 2px;
@@ -1898,7 +1898,7 @@ collection:
         controller: function controller($scope) {
           $scope.field = this.field;
           $scope.values = this.values;
-      
+
           $scope.getValidator = function (type) {
             if (typeof this.field.validation === 'undefined') return null;
             for (var i = 0; i < this.field.validation.length; i++) {
@@ -1909,7 +1909,7 @@ collection:
             }
             return null;
           };
-      
+
           if (typeof $scope.values[this.field.name] === 'undefined' || $scope.values[this.field.name] === "") {
             $scope.values[this.field.name] = 0;
           }
@@ -1940,30 +1940,30 @@ collection:
         background-color: var(--header-bg);
         color: var(--header-color);
       }
-      
+
       .header .container {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
       }
-      
+
       .header-logo {
         margin: -15px 0;
         width: calc(50% - 50px);
       }
-      
+
       .header-text {
         width: calc(50% - 50px);
       }
-      
+
       .header-logo img {
         max-height: 50px;
         max-width: 100%;
         display: block;
         margin: 0 0 0 auto;
       }
-      
+
       .timer {
         font-size: 24px;
         margin: 0 auto;
@@ -1971,7 +1971,7 @@ collection:
         text-align: center;
         color: var(--header-color);
       }
-      
+
       @media screen and (max-width: 500px) {
         .timer {
           font-size: 16px;
@@ -1979,11 +1979,11 @@ collection:
           width: 60px;
           text-align: right;
         }
-      
+
         .header-text {
           width: calc(100% - 60px);
         }
-      
+
         .header-logo {
           display: none;
         }
@@ -2014,13 +2014,13 @@ collection:
         margin: auto;
         padding: 20px;
       }
-      
+
       .footer {
         background-color: var(--option-bg);
         font-size: 14px;
         margin-top: auto;
       }
-      
+
       .footer a {
         color: var(--main-font-color);
       }
@@ -2046,7 +2046,7 @@ collection:
       :root {
         --accent-light-color: #45b87e;
       }
-      
+
       .body {
         min-height: 100vh;
         position: relative;
@@ -2054,7 +2054,7 @@ collection:
         flex-direction: column;
         justify-content: center;
       }
-      
+
       .lds-dual-ring {
         display: block;
         margin: 50px auto 150px;
@@ -2113,7 +2113,7 @@ collection:
           --main-font-size: 16px;
           --header-bg: #4581b5;
       }
-      
+
       .body {
           min-height: 100vh;
           position: relative;
@@ -2123,13 +2123,13 @@ collection:
           display: flex;
           flex-direction: column;
       }
-      
+
       .container {
           max-width: 1000px;
           margin: auto;
           padding: 20px;
       }
-      
+
       .main-btn {
           background-color: var(--accent-light-color);
           border: none;
@@ -2147,41 +2147,41 @@ collection:
           transition-property: background-color;
           outline: none;
       }
-      
+
       .main-btn:hover {
           background-color: var(--accent-dark-color);
       }
-      
+
       .main-btn:disabled {
           background-color: var(--option-hover-bg);
           color: #ccc;
           cursor: default;
       }
-      
+
       .left-btn {
           margin: 0 auto 0 0;
       }
-      
+
       .right-btn {
           margin: 0 0 0 auto;
       }
-      
+
       .question-footer {
           display: flex;
           flex-direction: row;
           justify-content: space-between;
           margin-top: 30px;
       }
-      
+
       .form-error {
           color: var(--error-color);
           font-size: 14px;
       }
-      
+
       .form-field {
           margin-bottom: 20px;
       }
-      
+
       @media screen and (max-width: 500px) {
           .main-btn {
               min-width: 0;
@@ -2192,17 +2192,17 @@ collection:
         $scope.fields = angular.fromJson(testRunner.R.fields);
         $scope.values = angular.fromJson(testRunner.R.initialValues);
         if (typeof $scope.values === 'undefined' || $scope.values === null) $scope.values = {};
-      
+
         function initializeValues() {
           for (var i = 0; i < $scope.fields.length; i++) {
             var field = $scope.fields[i];
-      
+
             if (typeof $scope.values[field.name] === 'undefined') {
               $scope.values[field.name] = "";
             }
           }
         }
-      
+
         initializeValues();
       });
     html: |
@@ -2211,16 +2211,16 @@ collection:
       {{template:inputCheckbox,css=FALSE,html=FALSE}}
       {{template:inputSelect,css=FALSE,html=FALSE}}
       {{template:inputPassword,css=FALSE,html=FALSE}}
-      
+
       <div class="body" ng-controller="form">
       	{{template:header}}
-      
+
       	<div class="questions">
       		<div class="container">
-      
+
       			<form name="form">
       				<div ng-repeat="field in fields track by $index">
-      
+
       					<div class="form-field">
       						<div ng-switch="field.type">
       							<input-single-line ng-switch-when="singleLine" field="field" values="values"></input-single-line>
@@ -2232,16 +2232,16 @@ collection:
       						<div class="form-error" ng-repeat="error in field.validation" ng-show="form[field.name].$error[error.type] && form[field.name].$dirty">[[error.alert]]</div>
       					</div>
       				</div>
-      
+
       				<div class="question-footer">
       					<button id="submitButton" class="main-btn right-btn" ng-disabled="form.$invalid" name="submit">Next</button>
       				</div>
       			</form>
       		</div>
       	</div>
-      
+
       	{{template:footer}}
-      
+
       </div>
     groups: ''
     starterContent: true
@@ -2270,7 +2270,7 @@ collection:
         --header-bg: #4581b5;
         --header-color: #ffffff;
       }
-      
+
       .body {
         min-height: 100vh;
         position: relative;
@@ -2280,13 +2280,13 @@ collection:
         display: flex;
         flex-direction: column;
       }
-      
+
       .container {
         max-width: 1000px;
         margin: auto;
         padding: 20px;
       }
-      
+
       .main-btn {
         background-color: var(--accent-light-color);
         border: none;
@@ -2304,44 +2304,44 @@ collection:
         transition-property: background-color;
         outline: none;
       }
-      
+
       .main-btn:hover {
         background-color: var(--accent-dark-color);
       }
-      
+
       .main-btn:disabled {
         background-color: var(--option-hover-bg);
         color: #ccc;
         cursor: default;
       }
-      
+
       .left-btn {
         margin: 0 auto 0 0;
       }
-      
+
       .right-btn {
         margin: 0 0 0 auto;
       }
-      
+
       /*QUESTIONS*/
       .question-text {
         font-weight: 600;
         text-align: center;
         margin: 20px auto;
       }
-      
+
       .question-footer {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         margin-top: 20px;
       }
-      
+
       .question-page {
         font-size: 14px;
         padding: 10px 0;
       }
-      
+
       .form-error {
         color: var(--error-color);
         font-size: 14px;
@@ -2349,12 +2349,12 @@ collection:
         top: -18px;
         text-align: center;
       }
-      
+
       @media screen and (max-width: 500px) {
         .question-text {
           font-size: 14px;
         }
-      
+
         .main-btn {
           min-width: 0;
         }
@@ -2369,14 +2369,14 @@ collection:
         $scope.totalPages = testRunner.R.totalPages;
         $scope.pastResponses = testRunner.R.responses;
         $scope.responses = {};
-      
+
         if ($scope.pastResponses) {
           for (var i = 0; i < $scope.pastResponses.length; i++) {
             var response = $scope.pastResponses[i];
             $scope.responses["r" + response.item_id] = typeof response.response === 'object' ? response.response : {value: response.response};
           }
         }
-      
+
         for (var i = 0; i < $scope.items.length; i++) {
           var item = $scope.items[i];
           if (typeof item.responseOptions === "string") {
@@ -2384,7 +2384,7 @@ collection:
             $scope.items[i] = item;
           }
           $scope.items[i] = item;
-      
+
           if (typeof $scope.responses["r" + item.id] === 'undefined') {
             $scope.responses["r" + item.id] = {};
           }
@@ -2395,27 +2395,27 @@ collection:
       {{template:itemOptions,css=FALSE,html=FALSE}}
       {{template:itemPainMannequin,css=FALSE,html=FALSE}}
       {{template:itemGracelyScale,css=FALSE,html=FALSE}}
-      
+
       <div class="body" ng-controller="test">
       	{{template:header}}
-      
+
       	<div class="questions">
       		<div class="container">
-      
+
       			<form name="form">
       				<div ng-repeat="item in items">
       					<div class="question-text" ng-bind-html="item.question"></div>
-      
+
       					<div ng-switch="item.responseOptions.type">
       						<item-open item="item" ng-switch-when="open" response="responses['r' + item.id]" response-required="responseRequired"></item-open>
       						<item-options item="item" ng-switch-when="options" response="responses['r' + item.id]" response-required="responseRequired"></item-options>
       						<item-pain-mannequin item="item" ng-switch-when="painMannequin" response="responses['r' + item.id]" response-required="responseRequired"></item-pain-mannequin>
       						<item-gracely-scale item="item" ng-switch-when="gracelyScale" response="responses['r' + item.id]" response-required="responseRequired"></item-gracely-scale>
       					</div>
-      
+
       					<div class="form-error" ng-show="form.response.$error.required && form.response.$dirty">[[responseRequiredAlert]]</div>
       				</div>
-      
+
       				<div class="question-footer">
       					<button class="main-btn left-btn" ng-if="canGoBack" name="back">Back</button>
       					<div class="question-page" ng-show="page != null && totalPages != null">Page&nbsp;[[page]]&nbsp;/&nbsp;[[totalPages]]</div>
@@ -2424,7 +2424,7 @@ collection:
       			</form>
       		</div>
       	</div>
-      
+
       	{{template:footer}}
       </div>
     groups: ''
@@ -2725,7 +2725,7 @@ collection:
     type: 0
     code: |
       library(digest)
-      
+
       resultCode = 0
       getUserByLogin = function(login) {
         if(userBankType == "direct") {
@@ -2734,7 +2734,7 @@ collection:
             resultCode <<- 1
             return(NULL)
           }
-      
+
           for(i in 1:length(userList)) {
             user = userList[[i]]
             if(user$login == login && user$enabled == 1) {
@@ -2746,9 +2746,9 @@ collection:
         } else {
           tableMap = fromJSON(userBankTable)
           sql = "
-      SELECT * 
-      FROM {{table}} 
-      WHERE 
+      SELECT *
+      FROM {{table}}
+      WHERE
       {{loginColumn}}='{{login}}'
       AND {{enabledColumn}}=1
       "
@@ -2765,7 +2765,7 @@ collection:
           return(user[1,])
         }
       }
-      
+
       checkPassword = function(rawPassword, encryptedPassword, encryption) {
         if(is.na(encryptedPassword) || encryptedPassword == "") { return(T) }
         if(is.na(rawPassword)) { return(F) }
@@ -2774,29 +2774,29 @@ collection:
         }
         return(digest(rawPassword, encryption, serialize=F) == encryptedPassword)
       }
-      
+
       authorizeUser = function(login, password) {
         user = getUserByLogin(login)
-        concerto.log(login, "login checked")
-        concerto.log(password, "password checked")
-        concerto.log(user, "user checked for password")
-        
+        concerto.log(login, "_authorizeUser ▷ login checked")
+        concerto.log(password, "_authorizeUser ▷ password checked")
+        concerto.log(user, "_authorizeUser ▷ user checked for password")
+
         if(!is.null(user) && checkPassword(password, user$password, userBankEncryption)) {
           return(user)
         }
         resultCode <<- 1
         return(NULL)
       }
-      
+
       user = authorizeUser(login, password)
       if(is.null(user)) {
-        concerto.log(paste0("user ",login," unauthorized"), title="authorization result")
+        concerto.log(paste0("user ",login," unauthorized"), title="_authorizeUser ▷ authorization result")
         .branch = "unauthorized"
       } else {
-        concerto.log(paste0("user ",login," authorized"), title="authorization result")
+        concerto.log(paste0("user ",login," authorized"), title="_authorizeUser ▷ authorization result")
         .branch = "authorized"
       }
-      
+
     description: ''
     variables:
       -
@@ -2933,7 +2933,7 @@ collection:
       for(.name in .dynamicInputs) {
           result[.name] = list(get(.name))
       }
-      
+
     description: 'List creation. Dynamic inputs will be used as list elements (input name as list key, input value as list value).'
     variables:
       -
@@ -4371,9 +4371,9 @@ collection:
                   fixedIndexColumn = tableMap$columns$fixedIndex
                   items = concerto.table.query(
                     "
-              SELECT 
-              id, 
-              {{questionColumn}} AS question, 
+              SELECT
+              id,
+              {{questionColumn}} AS question,
               {{responseOptionsColumn}} AS responseOptions,
               {{p1Column}} AS p1,
               {{p2Column}} AS p2,
@@ -4387,7 +4387,7 @@ collection:
               {{cbGroupColumn}} AS cbGroup,
               {{fixedIndexColumn}} AS fixedIndex
               FROM {{table}}
-              ", 
+              ",
                     list(
                       questionColumn=questionColumn,
                       responseOptionsColumn=responseOptionsColumn,
@@ -4413,43 +4413,43 @@ collection:
                       items = rbind(items, data.frame(itemBankItems[[i]], stringsAsFactors=F))
                     }
                   }
-                } 
-              
+                }
+
                 if(dim(items)[1] == 0) { stop("Item bank must not be empty!") }
                 return(items)
               }
-              
+
               items = getItems(settings$itemBankType, settings$itemBankItems, settings$itemBankTable)
               itemsNum = dim(items)[1]
-              
+
               cbGroup = NULL
               cbControl = NULL
               cbProps = fromJSON(settings$contentBalancing)
-              concerto.log(cbProps, "cbProps")
+              concerto.log(cbProps, "eval@initialization ▷ cbProps")
               if(length(cbProps) > 0) {
                 cbGroup = as.character(items[,"cbGroup"])
                 cbControl = list(
                   names=NULL,
                   props=NULL
                 )
-              
+
                 for(i in 1:length(cbProps)) {
                   cbControl$names = c(cbControl$names, cbProps[[i]]$name)
                   cbControl$props = c(cbControl$props, as.numeric(cbProps[[i]]$proportion))
                 }
-                concerto.log(cbControl, "cbControl")
+                concerto.log(cbControl, "eval@initialization ▷ cbControl")
               }
-              
+
               paramBank = items[,c("p1","p2","p3","p4","p5","p6","p7","p8","p9"),drop=F]
               paramBank = paramBank[,1:as.numeric(settings$itemParamsNum),drop=F]
               paramBank = apply(paramBank, 2, as.numeric)
-              
+
               theta = as.numeric(settings$startingTheta)
               itemsAdministered = NULL
               correctness = NULL
               testTimeStarted = as.numeric(Sys.time())
               testTimeLeft = as.numeric(settings$testTimeLimit) + as.numeric(settings$testTimeLimitOffset)
-              
+
             node: 104
             variable: 89
             variableObject:
@@ -4685,15 +4685,15 @@ collection:
             id: 1099
             value: |
               library(catR)
-              
+
               getSafeItem = function(item) {
                 item = as.list(item)
                 item$correct = NULL
-              
+
                 if(is.character(item$responseOptions)) { item$responseOptions = fromJSON(item$responseOptions) }
                 responseOptionsRandomOrder = item$responseOptions$optionsRandomOrder == "1"
                 orderedOptions = c()
-              
+
                 if(length(item$responseOptions$options) > 0) {
                   if(responseOptionsRandomOrder) {
                     orderedOptions = item$responseOptions$options[sample(1:length(item$responseOptions$options))]
@@ -4709,7 +4709,7 @@ collection:
                 item$responseOptions = toJSON(item$responseOptions)
                 return(item)
               }
-              
+
               currentIndex = length(itemsAdministered) + 1
               itemsNum = dim(items)[1]
               nextItemIndex = 0
@@ -4717,7 +4717,7 @@ collection:
                 for(i in 1:itemsNum) {
                   fixedIndex = items[i,"fixedIndex"]
                   if(!is.na(fixedIndex) && !is.null(fixedIndex) && fixedIndex != "" && fixedIndex != 0){
-                    concerto.log(fixedIndex, "fixedIndex")
+                    concerto.log(fixedIndex, "eval@next_item_selector ▷ fixedIndex")
                     if(fixedIndex == currentIndex) {
                       nextItemIndex = i
                     } else {
@@ -4726,17 +4726,17 @@ collection:
                   }
                 }
               }
-              
+
               if(nextItemIndex == 0) {
-                concerto.log(itemsAdministered, "out")
+                concerto.log(itemsAdministered, "eval@next_item_selector ▷ out")
                 result = nextItem(paramBank, model=settings$model, theta=theta, out=itemsAdministered, criterion=settings$nextItemCriterion, method=settings$scoringMethod, randomesque=settings$nextItemRandomesque, cbGroup=cbGroup, cbControl=cbControl)
                 nextItemIndex = result$item
               }
-              concerto.log(nextItemIndex, "nextItemIndex")
+              concerto.log(nextItemIndex, "eval@next_item_selector ▷ nextItemIndex")
               nextItem = items[nextItemIndex,]
-              concerto.log(nextItem, "nextItem")
+              concerto.log(nextItem, "eval@next_item_selector ▷ nextItem")
               nextItemSafe = getSafeItem(nextItem)
-              
+
             node: 105
             variable: 89
             variableObject:
@@ -4975,10 +4975,10 @@ collection:
                 templateParams$items = data.frame(itemSafe)
                 templateParams$responseRequired = responseRequired
                 templateParams$responseRequiredAlert = responseRequiredAlert
-              
+
                 return(templateParams)
               }
-              
+
               getTimeLimit = function(testTimeStarted, testTimeLimit, itemTimeLimit) {
                 limit = 0
                 startedAgo = as.numeric(Sys.time()) - testTimeStarted
@@ -4996,7 +4996,7 @@ collection:
                 }
                 return(limit)
               }
-              
+
               if(!concerto.template.isResponseQueued()) {
                 params = getTemplateParams(itemSafe, templateParams, settings$responseRequired, settings$responseRequiredAlert)
                 if(!is.na(settings$itemTemplateParamsModule) && settings$itemTemplateParamsModule != "") {
@@ -5006,20 +5006,20 @@ collection:
                   ))$params
                 }
               }
-              
+
               response = concerto.template.show(
-                settings$itemTemplate, 
-                params=params, 
+                settings$itemTemplate,
+                params=params,
                 timeLimit=getTimeLimit(
-                  testTimeStarted, 
-                  as.numeric(settings$testTimeLimit), 
+                  testTimeStarted,
+                  as.numeric(settings$testTimeLimit),
                   as.numeric(settings$itemTimeLimit)
                 )
               )
-              
+
               .branch = "submitted"
               if(response$isTimeout == 1) { .branch = "outOfTime" }
-              
+
             node: 106
             variable: 89
             variableObject:
@@ -5255,7 +5255,7 @@ collection:
             id: 1125
             value: |
               library(catR)
-              
+
               getResponseCatValue = function(item, response) {
                 defaultCatValue = 0
                 if(!is.null(response)) {
@@ -5270,7 +5270,7 @@ collection:
                     }
                   }
                 }
-                
+
                 catValue = defaultCatValue
                 if(!is.na(settings$responseCatValueModule) && settings$responseCatValueModule != "") {
                   catValue = concerto.test.run(settings$responseCatValueModule, params=list(
@@ -5281,7 +5281,7 @@ collection:
                 }
                 return(catValue)
               }
-              
+
               responseRaw = response[[paste0("r",item$id)]]
               responseCatValue = getResponseCatValue(item, responseRaw)
               responses = c(responses, responseCatValue)
@@ -5290,12 +5290,12 @@ collection:
               if(dim(items)[1] > 1) {
                 paramBankAdministered = paramBank[itemsAdministered,]
               }
-              concerto.log(itemsAdministered, "itemsAdministered")
-              concerto.log(responses, "responses")
+              concerto.log(itemsAdministered, "eval@scoring ▷ itemsAdministered")
+              concerto.log(responses, "eval@scoring ▷ responses")
               theta <- thetaEst(matrix(paramBankAdministered, ncol=as.numeric(settings$itemParamsNum), byrow=F), responses, model=settings$model, method=settings$scoringMethod)
-              concerto.log(theta, "theta")
+              concerto.log(theta, "eval@scoring ▷ theta")
               sem <- semTheta(theta, matrix(paramBankAdministered, ncol=as.numeric(settings$itemParamsNum), byrow=F), responses, model=settings$model)
-              concerto.log(sem, "SEM")
+              concerto.log(sem, "eval@scoring ▷ SEM")
             node: 107
             variable: 89
             variableObject:
@@ -5569,17 +5569,17 @@ collection:
                 }
                 return(id)
               }
-              
+
               saveResponse = function(responseBank, session, response, responseCatValue, item, theta, sem) {
                 responseBank = fromJSON(responseBank)
                 if(is.null(responseBank$table)) {
-                  concerto.log("no response bank defined, skipping response saving")
+                  concerto.log("eval@response_processor ▷ no response bank defined, skipping response saving")
                   return(NULL)
                 }
-              
+
                 sql = "
-              INSERT INTO {{table}} 
-              ({{itemIdColumn}}, {{responseColumn}}, {{responseCatValueColumn}}, {{timeTakenColumn}}, {{sessionIdColumn}}, {{thetaColumn}}, {{semColumn}}) 
+              INSERT INTO {{table}}
+              ({{itemIdColumn}}, {{responseColumn}}, {{responseCatValueColumn}}, {{timeTakenColumn}}, {{sessionIdColumn}}, {{thetaColumn}}, {{semColumn}})
               VALUES ({{itemId}}, '{{responseValue}}', {{responseCatValue}}, {{timeTaken}}, '{{sessionId}}', {{theta}}, {{sem}})
               "
                 concerto.table.query(sql, list(
@@ -5601,10 +5601,10 @@ collection:
                 ))
                 return(concerto.table.lastInsertId())
               }
-              
+
               itemsAdministered = unique(c(itemsAdministered, itemIndex))
               responseId = saveResponse(settings$responseBank, session, response, responseCatValue, item, theta, sem)
-              
+
             node: 108
             variable: 89
             variableObject:
@@ -5863,38 +5863,38 @@ collection:
                 }
                 return(F)
               }
-              
+
               getBranch = function(testTimeLimit, testTimeStarted, itemTimeLimit, itemTimeFullRequired, itemNumLimit, minAccuracy, itemsAdministered, itemsNum, sem) {
                 if(isOutOfTime(testTimeLimit, testTimeStarted, itemTimeLimit, itemTimeFullRequired)) {
-                  concerto.log("time out", "test status")
+                  concerto.log("time out", "eval@status_check ▷ test status")
                   return("stop")
                 }
-              
+
                 if(itemNumLimit > 0 && length(itemsAdministered) >= itemNumLimit || length(itemsAdministered) >= itemsNum) {
-                  concerto.log("maximum items reached", "test status")
+                  concerto.log("maximum items reached", "eval@status_check ▷ test status")
                   return("stop")
                 }
-              
+
                 if(minAccuracy != 0 && minAccuracy >= sem) {
-                  concerto.log("minimum accuracy", "test status")
+                  concerto.log("minimum accuracy", "eval@status_check ▷ test status")
                   return("stop")
                 }
-                concerto.log("continue", "test status")
+                concerto.log("continue", "eval@status_check ▷ test status")
                 return("continue")
               }
-              
+
               .branch = getBranch(
-                as.numeric(settings$testTimeLimit), 
-                testTimeStarted, 
-                as.numeric(settings$itemTimeLimit), 
-                settings$itemTimeFullRequired == "1", 
-                as.numeric(settings$itemNumLimit), 
-                as.numeric(settings$minAccuracy), 
-                itemsAdministered, 
-                dim(items)[1], 
+                as.numeric(settings$testTimeLimit),
+                testTimeStarted,
+                as.numeric(settings$itemTimeLimit),
+                settings$itemTimeFullRequired == "1",
+                as.numeric(settings$itemNumLimit),
+                as.numeric(settings$minAccuracy),
+                itemsAdministered,
+                dim(items)[1],
                 sem
               )
-              
+
             node: 109
             variable: 89
             variableObject:
@@ -7760,7 +7760,7 @@ collection:
     type: 0
     code: |
       library(digest)
-      
+
       formatFields = function(login, password, userBankEncryption, enabled, extraFields) {
         fields = list(
           login=login,
@@ -7777,10 +7777,10 @@ collection:
         }
         return(fields)
       }
-      
+
       checkLoginExist = function(login, tableMap) {
         sql = "
-      SELECT * FROM {{table}} 
+      SELECT * FROM {{table}}
       WHERE {{loginColumn}}='{{login}}'
       "
         user = concerto.table.query(sql, params=list(
@@ -7788,10 +7788,10 @@ collection:
           loginColumn=tableMap$columns$login,
           login=login
         ))
-      
+
         return(dim(user)[1]>0)
       }
-      
+
       getMappedColumns = function(fieldNames, tableMap) {
         cols = c()
         for(i in 1:length(fieldNames)) {
@@ -7804,7 +7804,7 @@ collection:
         }
         return(cols)
       }
-      
+
       insertUser = function(fields, tableMap) {
         sql = paste0(
           "INSERT INTO {{table}} (",
@@ -7817,31 +7817,31 @@ collection:
           table=tableMap$table
         )))
         userId = concerto.table.lastInsertId()
-        concerto.log(userId, title="new user id")
-      
+        concerto.log(userId, title="_createUser ▷ new user id")
+
         sql="SELECT * FROM {{table}} WHERE {{idColumn}}={{id}}"
         user=concerto.table.query(sql,params=list(
           table=tableMap$table,
           idColumn=tableMap$columns$id,
           id=userId
         ))
-        concerto.log(user, title="inserted user")
+        concerto.log(user, title="_createUser ▷ inserted user")
         return(user)
       }
-      
+
       user=NULL
       if(is.na(password)) { password = "" }
       tableMap = fromJSON(userBankTable)
       fields = formatFields(login, password, userBankEncryption, enabled, extraFields)
       if(checkLoginExist(login, tableMap)) {
-        concerto.log(login, title="login already exist")
+        concerto.log(login, title="_createUser ▷ login already exist")
         .branch = "loginAlreadyExist"
       } else {
-        concerto.log(login, title="login doesn't exist and can be created")
+        concerto.log(login, title="_createUser ▷ login doesn't exist and can be created")
         user=insertUser(fields, tableMap)
         .branch = "created"
       }
-      
+
     description: ''
     variables:
       -
@@ -7990,7 +7990,7 @@ collection:
         }
         return(NULL)
       }
-          
+
       getSetClause = function(set, type) {
         if(is.na(set) || set == "") {
           if(type == "insert") {
@@ -8032,7 +8032,7 @@ collection:
         }
         return(NULL)
       }
-        
+
       getCustomQuery = function(queryString) {
         params = list()
         for(name in .dynamicInputs) {
@@ -8041,7 +8041,7 @@ collection:
         queryString = concerto.table.insertParams(queryString, params)
         return(queryString)
       }
-      
+
       result = NULL
       if(queryType == "select") {
         queryString = "SELECT * FROM {{table}}"
@@ -8089,7 +8089,7 @@ collection:
         queryString = getCustomQuery(queryString)
         result = concerto.table.query(queryString)
       }
-      
+
     description: ''
     variables:
       -
@@ -8190,12 +8190,12 @@ collection:
         templateParams$initialValues = initialValues
         return(templateParams)
       }
-      
+
       response = concerto5:::concerto.template.show(
         template,
         params=getTemplateParams(templateParams, fields, initialValues)
       )
-      
+
       for(.name in .dynamicReturns) {
         assign(.name, response[[.name]])
       }
@@ -8203,7 +8203,7 @@ collection:
         .branch = response$buttonPressed
         if(!(.branch %in% .dynamicBranches)) { .branch = "out" }
       }
-      
+
     description: ''
     variables:
       -
@@ -9237,16 +9237,16 @@ collection:
                   correctColumn = tableMap$columns$correct
                   items = concerto.table.query(
                     "
-              SELECT 
-              id, 
-              {{questionColumn}} AS question, 
+              SELECT
+              id,
+              {{questionColumn}} AS question,
               {{responseOptionsColumn}} AS responseOptions,
               {{orderIndexColumn}} AS orderIndex,
               {{traitColumn}} AS trait,
               {{correctColumn}} AS correct
-              FROM {{table}} 
+              FROM {{table}}
               ORDER BY {{orderIndexColumn}}
-              ", 
+              ",
                     list(
                       questionColumn=questionColumn,
                       responseOptionsColumn=responseOptionsColumn,
@@ -9264,24 +9264,24 @@ collection:
                       items = rbind(items, data.frame(itemBankItems[[i]], stringsAsFactors=F))
                     }
                   }
-                } 
-                
+                }
+
                 if(dim(items)[1] == 0) { stop("Item bank must not be empty!") }
                 if(order == "random") {
                   items = items[sample(1:dim(items)[1]),]
                 }
                 return(items)
               }
-              
+
               items = getItems(settings$itemBankType, settings$itemBankItems, settings$itemBankTable, settings$order)
-              
+
               itemsAdministered = NULL
               scores = NULL
               traitScores = list()
-              
+
               testTimeStarted = as.numeric(Sys.time())
               testTimeLeft = as.numeric(settings$testTimeLimit) + as.numeric(settings$testTimeLimitOffset)
-              
+
             node: 110
             variable: 89
             variableObject:
@@ -9480,17 +9480,17 @@ collection:
                 }
                 return(id)
               }
-              
+
               getSafeItems = function(nextItems) {
                 itemsNum = dim(nextItems)[1]
                 if(itemsNum > 0) {
                   for(i in 1:itemsNum) {
                     item = as.list(nextItems[i,])
-              
+
                     if(is.character(item$responseOptions)) { item$responseOptions = fromJSON(item$responseOptions) }
                     responseOptionsRandomOrder = item$responseOptions$optionsRandomOrder == "1"
                     orderedOptions = c()
-              
+
                     if(length(item$responseOptions$options) > 0) {
                       if(responseOptionsRandomOrder) {
                         orderedOptions = item$responseOptions$options[sample(1:length(item$responseOptions$options))]
@@ -9502,28 +9502,28 @@ collection:
                       elem$score = NULL
                       return(elem)
                     })
-              
+
                     item$responseOptions$options = orderedOptions
                     item$responseOptions$openScore = NULL
                     item$responseOptions$openCorrect = NULL
                     item$responseOptions = toJSON(item$responseOptions)
-                    
+
                     nextItems[i,] = item
                   }
                 }
                 return(nextItems)
               }
-              
+
               getSafePastResponses = function(nextItems, session, responseBank) {
                 responseBank = fromJSON(responseBank)
                 if(is.null(responseBank$table)) {
-                  concerto.log("no response bank defined")
+                  concerto.log("eval@next_item_selector ▷ no response bank defined")
                   return(NULL)
                 }
-              
+
                 sql = "
               SELECT * FROM {{table}}
-              WHERE 
+              WHERE
               {{sessionIdColumn}}='{{sessionId}}' AND
               {{itemIdColumn}} IN ({{itemIds}})
               "
@@ -9540,16 +9540,16 @@ collection:
                 }
                 return(NULL)
               }
-              
-              concerto.log(prevPage, "previous page")
-              concerto.log(direction, "direction")
+
+              concerto.log(prevPage, "eval@next_item_selector ▷ previous page")
+              concerto.log(direction, "eval@next_item_selector ▷ direction")
               nextPage = as.numeric(prevPage) + as.numeric(direction)
-              
+
               pageFirstItemIndex = (nextPage - 1) * as.numeric(settings$itemsPerPage) + 1
               pageLastItemIndex = min(nextPage * as.numeric(settings$itemsPerPage), dim(items)[1])
-              
+
               nextItemsIndices = pageFirstItemIndex:pageLastItemIndex
-              concerto.log(nextItemsIndices, "next item indices")
+              concerto.log(nextItemsIndices, "eval@next_item_selector ▷ next item indices")
               nextItems = items[nextItemsIndices,]
               nextItemsSafe = getSafeItems(nextItems)
               pastResponsesSafe = getSafePastResponses(nextItems, session, settings$responseBank)
@@ -9810,10 +9810,10 @@ collection:
                 templateParams$responseRequiredAlert = responseRequiredAlert
                 templateParams$page = page
                 templateParams$totalPages = totalPages
-              
+
                 return(templateParams)
               }
-              
+
               getTimeLimit = function(testTimeStarted, testTimeLimit, itemTimeLimit) {
                 limit = 0
                 startedAgo = as.numeric(Sys.time()) - testTimeStarted
@@ -9831,34 +9831,34 @@ collection:
                 }
                 return(limit)
               }
-              
+
               canGoBack = if(settings$canGoBack == "1" && page > 1) { 1 } else { 0 }
               maxItems = dim(items)[1]
               itemNumLimit = as.numeric(settings$itemNumLimit)
               if(itemNumLimit > 0) { maxItems = min(maxItems, itemNumLimit) }
               totalPages = ceiling(maxItems / as.numeric(settings$itemsPerPage))
               response = concerto.template.show(
-                settings$itemTemplate, 
+                settings$itemTemplate,
                 params=getData(
-                  itemsSafe, 
-                  responsesSafe, 
-                  canGoBack, 
-                  templateParams, 
-                  settings$responseRequired, 
-                  settings$responseRequiredAlert, 
-                  page, 
+                  itemsSafe,
+                  responsesSafe,
+                  canGoBack,
+                  templateParams,
+                  settings$responseRequired,
+                  settings$responseRequiredAlert,
+                  page,
                   totalPages
-                ), 
+                ),
                 timeLimit=getTimeLimit(
-                  testTimeStarted, 
-                  as.numeric(settings$testTimeLimit), 
+                  testTimeStarted,
+                  as.numeric(settings$testTimeLimit),
                   as.numeric(settings$itemTimeLimit)
                 )
               )
-              
+
               .branch = "submitted"
               if(response$isTimeout == 1) { .branch = "outOfTime" }
-              
+
             node: 112
             variable: 89
             variableObject:
@@ -10144,7 +10144,7 @@ collection:
                   item = currentItems[i,]
                   index = currentItemsIndices[i]
                   itemResponse = templateResponse[[paste0("r",item$id)]]
-              
+
                   if(!is.null(itemResponse)) {
                     responseOptions = fromJSON(item$responseOptions)
                     if(responseOptions$type == "open") {
@@ -10161,12 +10161,12 @@ collection:
                       }
                     }
                   }
-              
+
                   scores[index] = score
                 }
                 return(scores)
               }
-              
+
               updateTraitScores = function(scores, items) {
                 traitScores = list()
                 for(i in 1:length(scores)) {
@@ -10180,13 +10180,13 @@ collection:
                 }
                 return(traitScores)
               }
-              
+
               scores = updateScores(response, currentItems, currentItemsIndices, scores)
               traitScores = updateTraitScores(scores, items)
-              
-              concerto.log(scores, "scores")
-              concerto.log(traitScores, "traitScores")
-              
+
+              concerto.log(scores, "eval@scoring ▷ scores")
+              concerto.log(traitScores, "eval@scoring ▷ traitScores")
+
             node: 113
             variable: 89
             variableObject:
@@ -10430,14 +10430,14 @@ collection:
                 }
                 return(id)
               }
-              
+
               saveResponses = function(responseBank, sessionId, templateResponse, currentItems, currentItemsIndices, scores) {
                 responseBank = fromJSON(responseBank)
                 if(is.null(responseBank$table)) {
-                  concerto.log("no response bank defined, skipping response saving")
+                  concerto.log("no response bank defined, skipping response saving", "eval@response_processor ▷")
                   return(NULL)
                 }
-                
+
                 sql = "SELECT * FROM {{table}} WHERE {{itemIdColumn}} IN ({{itemsIds}}) AND {{sessionIdColumn}}='{{sessionId}}'"
                 responses = concerto.table.query(sql, params=list(
                   table=responseBank$table,
@@ -10446,7 +10446,7 @@ collection:
                   sessionIdColumn=responseBank$columns$session_id,
                   sessionId=sessionId
                 ))
-              
+
                 queries = NULL
                 for(i in 1:dim(currentItems)[1]) {
                   found = F
@@ -10458,13 +10458,13 @@ collection:
                       if(response$item_id == item$id) {
                         found = T
                         sql = "
-                UPDATE {{table}} 
-                SET 
-                {{itemIdColumn}}={{itemId}}, 
-                {{responseColumn}}='{{response}}', 
-                {{timeTakenColumn}}={{timeTaken}}, 
-                {{sessionIdColumn}}='{{sessionId}}', 
-                {{scoreColumn}}={{score}}, 
+                UPDATE {{table}}
+                SET
+                {{itemIdColumn}}={{itemId}},
+                {{responseColumn}}='{{response}}',
+                {{timeTakenColumn}}={{timeTaken}},
+                {{sessionIdColumn}}='{{sessionId}}',
+                {{scoreColumn}}={{score}},
                 {{traitColumn}}='{{trait}}'
                 WHERE {{itemIdColumn}}={{itemId}} AND {{sessionIdColumn}}='{{sessionId}}'
                 "
@@ -10496,20 +10496,20 @@ collection:
                   queries = c(queries, sql)
                 }
                 for(i in 1:length(queries)) {
-                	concerto.table.query(queries[i])  
+                	concerto.table.query(queries[i])
                 }
               }
-              
+
               sessionId = getSessionId(session)
               saveResponses(settings$responseBank, sessionId, response, currentItems, currentItemsIndices, scores)
-              
+
               direction = 1
-              itemsAdministered = unique(c(itemsAdministered, currentItemsIndices)) 
+              itemsAdministered = unique(c(itemsAdministered, currentItemsIndices))
               if(settings$canGoBack == "1" && page > 1 && response$buttonPressed == "back") {
                 direction = -1
               }
-              concerto.log(itemsAdministered, "itemsAdministered")
-              concerto.log(direction, "direction")
+              concerto.log(itemsAdministered, "eval@response_processor ▷ itemsAdministered")
+              concerto.log(direction, "eval@response_processor ▷ direction")
             node: 114
             variable: 89
             variableObject:
@@ -10753,40 +10753,40 @@ collection:
                 }
                 return(F)
               }
-              
+
               getBranch = function(testTimeLimit, testTimeStarted, itemTimeLimit, itemTimeFullRequired, itemNumLimit, itemsNum, direction, itemsAdministered) {
                 if(isOutOfTime(testTimeLimit, testTimeStarted, itemTimeLimit, itemTimeFullRequired)) {
-                  concerto.log("time out", "test status")
+                  concerto.log("time out", "eval@status_check ▷ test status")
                   return("stop")
                 }
-                
+
                 maxItems = dim(items)[1]
                 itemNumLimit = as.numeric(settings$itemNumLimit)
                 if(itemNumLimit > 0) { maxItems = min(maxItems, itemNumLimit) }
                 totalPages = ceiling(maxItems / as.numeric(settings$itemsPerPage))
-                
+
                 if(length(itemsAdministered) >= maxItems) {
                   if(direction > 0 && totalPages == page) {
-                    concerto.log("maximum items reached", "test status")
+                    concerto.log("maximum items reached", "eval@status_check ▷ test status")
                     return("stop")
                   }
                 }
-                
-                concerto.log("continue", "test status")
+
+                concerto.log("continue", "eval@status_check ▷ test status")
                 return("continue")
               }
-              
+
               .branch = getBranch(
-                as.numeric(settings$testTimeLimit), 
-                testTimeStarted, 
-                as.numeric(settings$itemTimeLimit), 
-                settings$itemTimeFullRequired == "1", 
-                as.numeric(settings$itemNumLimit), 
+                as.numeric(settings$testTimeLimit),
+                testTimeStarted,
+                as.numeric(settings$itemTimeLimit),
+                settings$itemTimeFullRequired == "1",
+                as.numeric(settings$itemNumLimit),
                 dim(items)[1],
                 direction,
                 itemsAdministered
               )
-              
+
             node: 115
             variable: 89
             variableObject:
@@ -12158,7 +12158,7 @@ collection:
       for(.name in .dynamicInputs) {
         params[[.name]] = get(.name)
       }
-      
+
       html = concerto.template.join(templateId=layout)
       content = fromJSON(content)
       if(length(content) > 0) {
@@ -12168,9 +12168,9 @@ collection:
           html = concerto.template.insertParams(html, pageParam, removeMissing=F)
         }
       }
-      
+
       html = concerto.template.insertParams(html, params, removeMissing=F)
-      
+
     description: ''
     variables:
       -
@@ -12251,12 +12251,12 @@ collection:
           params[[name]] = value
         }
       }
-      
+
       results = concerto5:::concerto.test.run(test, params=params)
       for(name in .dynamicReturns) {
         assign(name, results[[name]])
       }
-      
+
     description: ''
     variables:
       -
@@ -12322,11 +12322,11 @@ collection:
       for(.name in .dynamicInputs) {
         params[[.name]] = get(.name)
       }
-      
+
       if(!is.na(loaderTemplate)) {
         concerto.template.loader(loaderTemplate, params=params)
       }
-      
+
     description: ''
     variables:
       -
@@ -12385,14 +12385,14 @@ collection:
         }
         return(templateParams)
       }
-      
+
       response = concerto5:::concerto.template.show(
-        template=template, 
+        template=template,
         html=if(!is.null(html) && !is.na(html) && html != "") {html} else {""},
-        params=getTemplateParams(templateParams), 
+        params=getTemplateParams(templateParams),
         timeLimit=if(!is.na(timeLimit)) { as.numeric(timeLimit) } else { 0 }
       )
-      
+
       for(.name in .dynamicReturns) {
         assign(.name, response[[.name]])
       }
@@ -12400,7 +12400,7 @@ collection:
         .branch = response$buttonPressed
         if(!(.branch %in% .dynamicBranches)) { .branch = "out" }
       }
-      
+
     description: ''
     variables:
       -
@@ -12480,14 +12480,14 @@ collection:
     visibility: 2
     type: 0
     code: |
-      concerto.log(user, "user")
-      
+      concerto.log(user, "_startSession ▷ user")
+
       formatFields = function(user, extraFields) {
         userId = 0
         if(!is.null(user) && !is.na(user)) { userId=user$id }
         fields = list(
           user_id=userId,
-          internal_id=concerto$session$id, 
+          internal_id=concerto$session$id,
           test_id=concerto$mainTest$id,
           startedTime=Sys.time(),
           updateTime=Sys.time(),
@@ -12500,7 +12500,7 @@ collection:
         }
         return(fields)
       }
-      
+
       getMappedColumns = function(fieldNames, tableMap) {
         cols = c()
         for(i in 1:length(fieldNames)) {
@@ -12513,7 +12513,7 @@ collection:
         }
         return(cols)
       }
-      
+
       insertSession = function(fields, tableMap) {
         sqlColumns = paste(getMappedColumns(ls(fields), tableMap), collapse=",")
         sqlValues = paste0("'{{",ls(fields),"}}'", collapse=",")
@@ -12522,7 +12522,7 @@ collection:
           table=tableMap$table
         )))
         id = concerto.table.lastInsertId()
-      
+
         sql = "SELECT * FROM {{table}} WHERE {{idColumn}}={{id}}"
         session = concerto.table.query(sql, params=list(
           table=tableMap$table,
@@ -12534,46 +12534,46 @@ collection:
         }
         return(NULL)
       }
-      
+
       resumeSession = function(user, tableMap) {
         if(is.null(user)) { return(NULL) }
-      
+
         session = concerto.table.query("
-      SELECT * FROM {{table}} 
-      WHERE 
-      {{testIdColumn}} = {{testId}} AND 
-      {{userIdColumn}} = '{{userId}}' AND 
-      {{finishedColumn}} = 0 
+      SELECT * FROM {{table}}
+      WHERE
+      {{testIdColumn}} = {{testId}} AND
+      {{userIdColumn}} = '{{userId}}' AND
+      {{finishedColumn}} = 0
       ORDER BY id DESC", params=list(
-          table=tableMap$table, 
-          testIdColumn=tableMap$columns$test_id, 
-          testId=concerto$mainTest$id, 
-          userIdColumn=tableMap$columns$user_id, 
+          table=tableMap$table,
+          testIdColumn=tableMap$columns$test_id,
+          testId=concerto$mainTest$id,
+          userIdColumn=tableMap$columns$user_id,
           userId=user$id,
           finishedColumn=tableMap$columns$finished
         ), n=1)
         if(dim(session)[1] == 0) {
           return(NULL)
         }
-        
+
         session = as.list(session)
         session$previousInternal_id = session$internal_id
         session$internal_id = concerto$session$id
-      
+
         timeLimit = as.numeric(resumableExpiration)
         if(timeLimit > 0) {
           timeDiff = as.numeric(Sys.time()) - as.numeric(strptime(session$updateTime, "%Y-%m-%d %H:%M:%S"))
           if(timeDiff > timeLimit) {
-            concerto.log("session resume time limit exceeded")
+            concerto.log("session resume time limit exceeded", "_startSession ▷")
             return(NULL)
           }
         }
-      
+
         concerto.table.query("
-      UPDATE {{table}} 
-      SET 
-      {{internalIdColumn}}='{{internal_id}}', 
-      {{updateTimeColumn}}=CURRENT_TIMESTAMP 
+      UPDATE {{table}}
+      SET
+      {{internalIdColumn}}='{{internal_id}}',
+      {{updateTimeColumn}}=CURRENT_TIMESTAMP
       WHERE id={{id}}", params=list(
           table=tableMap$table,
           internalIdColumn=tableMap$columns$internal_id,
@@ -12581,20 +12581,20 @@ collection:
           id=session$id,
           updateTimeColumn=tableMap$columns$updateTime
         ))
-      
+
         return(session)
       }
-      
+
       fields = formatFields(user, extraFields)
-      concerto.log(fields, "fields")
+      concerto.log(fields, "_startSession ▷ fields")
       tableMap = fromJSON(sessionBankTable)
-      
+
       session = NULL
       if(resumable == 1) {
         session = resumeSession(user, tableMap)
         if(!is.null(session)) {
           hash = concerto.table.query("SELECT hash FROM TestSession WHERE id={{id}}", list(id=session$previousInternal_id))
-          concerto.log(hash, "resuming session...")
+          concerto.log(hash, "_startSession ▷ resuming session...")
           if(!concerto.session.unserialize(hash=hash)) {
             	session = NULL
           }
@@ -12603,8 +12603,8 @@ collection:
       if(is.null(session)) {
       	session = insertSession(fields, tableMap)
       }
-      concerto.log(session, "session")
-      
+      concerto.log(session, "_startSession ▷ session")
+
     description: ''
     variables:
       -
@@ -12696,27 +12696,27 @@ collection:
     code: |
       selectedLanguage = language
       if(is.na(language)) { selectedLanguage = defaultLanguage }
-      
-      concerto.log(selectedLanguage, "selected language")
-      
+
+      concerto.log(selectedLanguage, "_translationDictionary ▷ selected language")
+
       dictionaryTable = fromJSON(dictionaryTable)
       if(type == "multiTable") {
         suffixStartIndex = regexpr("_[^_]*$", dictionaryTable$table)
         if(suffixStartIndex==-1) {
           stop(paste0("dictionary mapping table ", dictionaryTable$table, " doesn't contain proper language suffix"))
         }
-        
+
         dictionaryTable$table = paste0(substr(dictionaryTable$table, 1, suffixStartIndex), selectedLanguage)
       }
-      
+
       entries = concerto.table.query("SELECT {{keyColumn}} AS entryKey, {{langColumn}} AS trans FROM {{table}}", params=list(
         keyColumn = dictionaryTable$columns$entryKey,
         langColumn = selectedLanguage,
         table = dictionaryTable$table
       ))
-      
+
       c.set("dictionary", entries, global=T)
-      
+
     description: ''
     variables:
       -
@@ -12804,7 +12804,7 @@ collection:
               	<li><b>Direct</b>&nbsp;- user bank is declared at node level</li>
               	<li><strong>Table</strong> - user bank is taken from data table</li>
               </ul>
-              
+
             hideCondition: ''
             type: 3
             passableThroughUrl: '0'
@@ -12877,7 +12877,7 @@ collection:
             label: 'Password encryption'
             description: |
               <p>Choose which hashing algorithm to apply&nbsp;to user&nbsp;passwords:</p>
-              
+
               <ul>
               	<li><strong>md5</strong></li>
               	<li><strong>sha1</strong></li>
@@ -12889,7 +12889,7 @@ collection:
               	<li><strong>murmur32</strong></li>
               	<li><strong>plain</strong></li>
               </ul>
-              
+
             hideCondition: ''
             type: 3
             passableThroughUrl: '0'
@@ -13130,12 +13130,12 @@ collection:
             label: Type
             description: |
               <p>Select where to get items from:</p>
-              
+
               <ul>
               	<li><strong>Direct&nbsp;</strong>- declare item bank at the node level</li>
               	<li><strong>Table&nbsp;</strong>- use a data table as the item bank</li>
               </ul>
-              
+
             hideCondition: ''
             type: 3
             passableThroughUrl: '0'
@@ -13595,7 +13595,7 @@ collection:
               </ul>
               <p><em>e.g. group1_proportion=1, group2_proportion=2 will mean that the next item algorithm will try to show twice as many items from group2 as from group1</em></p>
               <p><strong>NOTE: The&nbsp;number of items&nbsp;in each CB group in the item bank must&nbsp;be sufficient to cover the proportions specified</strong></p>
-              
+
             hideCondition: ''
             type: 10
             passableThroughUrl: '0'
@@ -14239,7 +14239,7 @@ collection:
             label: 'Password encryption'
             description: |
               <p>Select which hashing algorithm to apply to users&#39; passwords:</p>
-              
+
               <ul>
               	<li><strong>md5</strong></li>
               	<li><strong>sha1</strong></li>
@@ -14251,7 +14251,7 @@ collection:
               	<li><strong>murmur32</strong></li>
               	<li><strong>plain</strong></li>
               </ul>
-              
+
             hideCondition: ''
             type: 3
             passableThroughUrl: '0'
@@ -14448,7 +14448,7 @@ collection:
             label: 'Query type'
             description: |
               <p>Select which type of query this&nbsp;node should perform:</p>
-              
+
               <ul>
               	<li><strong>Select&nbsp;</strong>- reads data from table</li>
               	<li><strong>Update&nbsp;</strong>- updates existing data in table</li>
@@ -14456,7 +14456,7 @@ collection:
               	<li><strong>Delete&nbsp;</strong>- deletes existing data from table</li>
               	<li><strong>Custom&nbsp;</strong>- custom query</li>
               </ul>
-              
+
             hideCondition: ''
             type: 3
             passableThroughUrl: '0'
@@ -14533,18 +14533,18 @@ collection:
             label: 'Set clause'
             description: |
               <p>Here you can configure the operation of the Set clause:</p>
-              
+
               <ul>
               	<li>If the cell contains a&nbsp;string (<strong>Insert</strong>,&nbsp;<strong>Update</strong> only), it will be used literally and replace any insert directives with dynamic inputs from the node, e.g.:<br />
               	<strong>column1={{column1Value}} AND column2={{column2Value}}</strong></li>
               	<li>If the cell is empty, it will build a clause from dynamic inputs, using '<b>=</b>'<b>&nbsp;</b>and '<b>AND</b>'<b>&nbsp;</b>operators, e.g.:</li>
               </ul>
-              
+
               <ol>
               	<li><strong>(Insert</strong>&nbsp;only) for dynamic inputs:&nbsp;<strong>col1=2</strong>,&nbsp;<strong>col2=3:</strong><strong>(col1,col2) VALUES (2,3)</strong></li>
               	<li>(<strong>Update</strong>&nbsp;only) for dynamic inputs:&nbsp;<strong>col1=2</strong>,&nbsp;<strong>col2=3:</strong><strong>col1=2, col2=3</strong></li>
               </ol>
-              
+
             hideCondition: 'values.queryType == "select" || values.queryType == "custom"'
             type: 1
             passableThroughUrl: '0'
@@ -14564,7 +14564,7 @@ collection:
             label: 'Where clause'
             description: |
               <p>Here you can configure the operation of the where clause.</p>
-              
+
               <ul>
               	<li>If the cell contains a string (<strong>Select</strong>,&nbsp;<strong>Delete</strong> only), it will be used literally and will therefore replace any insert directives with dynamic inputs from the node, e.g.:<br />
               	<strong>column1={{column1Value}} AND column2={{column2Value}}</strong></li>
@@ -14572,7 +14572,7 @@ collection:
               	<strong>23&nbsp;</strong>will be converted to&nbsp;<strong>id=23</strong></li>
               	<li>If the cell is empty, this node&nbsp;will build a where clause from dynamic inputs, using '<b>=</b>'<b>&nbsp;</b>and '<b>AND</b>'<b>&nbsp;</b>operators, e.g.: for dynamic inputs:&nbsp;<strong>col1=2</strong>,&nbsp;<strong>col2=3:</strong>&nbsp;<strong>col1=2 AND col2=3</strong></li>
               </ul>
-              
+
             hideCondition: 'values.queryType == "insert" || values.queryType == "custom"'
             type: 1
             passableThroughUrl: '0'
@@ -14953,7 +14953,7 @@ collection:
       for(.name in .dynamicReturns) {
         assign(.name, c.get(.name, posOffset = -1))
       }
-      
+
     description: 'Gets promoted variables values. Use dynamic returns to declare which variables you want to get.'
     variables: {  }
     sourceWizard: null
@@ -14975,7 +14975,7 @@ collection:
     code: |
       .branch = "false"
       if(expression) { .branch = "true" }
-      
+
     description: '<strong>If</strong>&nbsp;expression.'
     variables:
       -
@@ -15049,12 +15049,12 @@ collection:
             label: Type
             description: |
               <p>Select where to get items from:</p>
-              
+
               <ul>
               	<li><strong>Direct&nbsp;</strong>- declare item bank at the node level</li>
               	<li><strong>Table&nbsp;</strong>- use a data table as the item bank</li>
               </ul>
-              
+
             hideCondition: ''
             type: 3
             passableThroughUrl: '0'
@@ -15294,12 +15294,12 @@ collection:
             label: Order
             description: |
               <p>Select the order in which to show items:</p>
-              
+
               <ul>
               	<li><strong>Manual</strong>&nbsp;- item order will be determined by sorted values in&nbsp;the&nbsp;<strong>orderIndex&nbsp;</strong>column</li>
               	<li><strong>Random&nbsp;</strong>- items will be shown in a random order</li>
               </ul>
-              
+
             hideCondition: ''
             type: 3
             passableThroughUrl: '0'
@@ -15452,7 +15452,7 @@ collection:
             label: 'Response Bank'
             description: |
               <p style="margin-bottom:10px"><span style="font-size:11pt"><span style="background:white"><span style="line-height:normal"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.5pt"><span style="font-family:&quot;Helvetica&quot;,sans-serif"><span style="color:#333333">Specify where to save responses to items. Leave empty to not store responses.</span></span></span></span></span></span></span></p>
-              
+
             hideCondition: ''
             type: 12
             passableThroughUrl: '0'
@@ -15783,12 +15783,12 @@ collection:
             label: 'Content Templates'
             description: |
               <p>Specify which templates to insert into the main layout template. There are two variables:</p>
-              
+
               <ul>
               	<li><strong>Name</strong>&nbsp;is the name of a&nbsp;variable on the main layout template</li>
               	<li><strong>Template&nbsp;</strong>is the template content that should be inserted in place of this named variable</li>
               </ul>
-              
+
             hideCondition: ''
             type: 10
             passableThroughUrl: '0'
@@ -16000,7 +16000,7 @@ collection:
       for(.name in .dynamicInputs) {
         c.set(.name, get(.name), posOffset = -1)
       }
-      
+
     description: 'Promote variables. Use dynamic inputs to declare which variables you want to promote.'
     variables:
       -
@@ -16522,12 +16522,12 @@ collection:
             label: Type
             description: |
               <p>Select which type of dictionary table you would like&nbsp;to use:</p>
-              
+
               <ul>
               	<li><strong>Language per table&nbsp;</strong>- each language will have its own table. Tables names must end with an underscore, followed by the language code, e.g.&nbsp;table&nbsp;<strong>dictionary_en</strong>&nbsp;for English). The name of the column containing the translated data must also&nbsp;be the same as the language code (e.g. column&nbsp;<strong>en</strong>&nbsp;for English)</li>
               	<li><strong>Language per column</strong>&nbsp;-&nbsp; all languages are in a single table, but each language has its own column. The names of columns containing the translated data must be the same as the language code (e.g. column&nbsp;<strong>en&nbsp;</strong>for English, column <strong>fr&nbsp;</strong>for French, etc.)</li>
               </ul>
-              
+
             hideCondition: ''
             type: 3
             passableThroughUrl: '0'

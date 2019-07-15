@@ -5,11 +5,11 @@ concerto.run = function(workingDir, client, sessionHash, maxIdleTime = NULL, max
     concerto$sessionFile <<- paste0(concerto$workingDir,"session.Rs")
     concerto$initialPort <<- initialPort
 
-    concerto.log(concerto$workingDir, ".run: concerto$workingDir")
-    concerto.log(unlist(concerto$client), ".run: concerto$client")
-    concerto.log(concerto$sessionHash, ".run: concerto$sessionHash")
-    concerto.log(concerto$sessionFile, ".run: concerto$sessionFile")
-    concerto.log(concerto$initialPort, ".run: concerto$initialPort")
+    concerto.log(concerto$workingDir, ".run ▶ concerto$workingDir")
+    concerto.log(unlist(concerto$client), ".run ▶ concerto$client")
+    concerto.log(concerto$sessionHash, ".run ▶ concerto$sessionHash")
+    concerto.log(concerto$sessionFile, ".run ▶ concerto$sessionFile")
+    concerto.log(concerto$initialPort, ".run ▶ concerto$initialPort")
 
     if(!is.null(maxIdleTime)) {
         concerto$maxIdleTime <<- maxIdleTime
@@ -50,7 +50,7 @@ concerto.run = function(workingDir, client, sessionHash, maxIdleTime = NULL, max
 
         concerto5:::concerto.session.stop(STATUS_FINALIZED, RESPONSE_FINISHED)
     }, error = function(e) {
-        concerto.log(e, ".run: e")
+        concerto.log(e, ".run ▶ e")
         if(!is.null(concerto$session)) { concerto$session$error <<- e }
         concerto5:::concerto.session.stop(STATUS_ERROR, RESPONSE_ERROR)
     })

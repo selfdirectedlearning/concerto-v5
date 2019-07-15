@@ -2,7 +2,7 @@ concerto.test.run <-
 function(testId, params=list(), extraReturns=c()) {
     test <- concerto.test.get(testId, cache=F, includeSubObjects=T)
     if (is.null(test)) stop(paste("Test #", testId, " not found!", sep = ''))
-    concerto.log(paste0("running test #", test$id, ": ", test$name, " ..."), ".test.run")
+    concerto.log(paste0("running test #", test$id, ": ", test$name, " ..."), ".test.run ▶")
 
     getParams = function(params) {
         if (dim(test$variables)[1] > 0) {
@@ -364,6 +364,6 @@ function(testId, params=list(), extraReturns=c()) {
     }
     concerto$flow[[flowIndex]] <<- NULL
 
-    concerto.log(paste0("test #", test$id, ": ", test$name, " finished"), ".test.run")
+    concerto.log(paste0("test #", test$id, ": ", test$name, " finished"), ".test.run ▶")
     return(r)
 }

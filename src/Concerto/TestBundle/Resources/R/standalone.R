@@ -1,5 +1,5 @@
 require(concerto5)
-
+concerto.log("▶▶▶ standalone.R")
 concerto5:::concerto.init(
     connectionParams = fromJSON(commandArgs(TRUE)[1]),
     publicDir = commandArgs(TRUE)[5],
@@ -22,3 +22,4 @@ concerto.log(unlist(fromJSON(commandArgs(TRUE)[2])), "standalone.R ▶ response 
 concerto.log(commandArgs(TRUE)[3], "standalone.R ▶ response passed to .run : sessionHash")
 concerto.log(unlist(fromJSON(commandArgs(TRUE)[10])), "standalone.R ▶ response passed to .run : response")
 concerto.log(commandArgs(TRUE)[11], "standalone.R ▶ response passed to .run : initialPort")
+concerto.log("◀◀◀ standalone.R")

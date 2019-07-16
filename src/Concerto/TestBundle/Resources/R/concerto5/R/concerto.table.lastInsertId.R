@@ -1,10 +1,12 @@
 concerto.table.lastInsertId <-
 function(){
+  concerto.log("▶▶▶ .table.lastInsertId")
   id = NULL
   if(concerto$connectionParams$driver == "pdo_sqlsrv") {
     id = concerto$sqlsrv_last_insert_id
   } else {
     id = dbGetQuery(concerto$connection, "SELECT LAST_INSERT_ID();")[1,1]
   }
+  concerto.log("◀◀◀ .table.lastInsertId")
   return(id)
 }

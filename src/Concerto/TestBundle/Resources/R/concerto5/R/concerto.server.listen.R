@@ -1,4 +1,5 @@
 concerto.server.listen = function(){
+    concerto.log("▶▶▶ .server.listen")
     repeat {
         concerto.log("listening to server...", ".listen ▶")
 
@@ -59,6 +60,7 @@ concerto.server.listen = function(){
             if(exists("concerto.onTemplateSubmit")) {
                 do.call("concerto.onTemplateSubmit",list(response=response$values), envir = .GlobalEnv)
             }
+            concerto.log("◀◀◀ .server.listen : if(exists(concerto.onTemplateSubmit))")
             return(response$values)
         } else if(response$code == RESPONSE_KEEPALIVE_CHECKIN) {
             concerto.log("keep alive checkin", ".listen ▶")
@@ -74,6 +76,9 @@ concerto.server.listen = function(){
                 result = do.call(concerto$bgWorkers[[response$values$bgWorker]], list(response=response$values))
             }
             concerto5:::concerto.server.respond(RESPONSE_WORKER, result)
-        } else return(response)
+        } else {
+          if(exists("concerto.onTemplateSubmit : case else"))
+          return(response)
+        }
     }
 }

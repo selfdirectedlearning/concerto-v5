@@ -1,4 +1,5 @@
 concerto.db.connect = function(driver, username, password, dbname, host, unix_socket, port){
+    concerto.log("▶▶▶ .db.connect")
     concerto.log(paste0("connecting with db using ",driver), ".db.connect ▶")
     con = NULL
     if (driver == "pdo_mysql") {
@@ -43,5 +44,6 @@ concerto.db.connect = function(driver, username, password, dbname, host, unix_so
     if (! existsFunction("dbSendStatement")) {
         dbSendStatement <<- dbSendQuery
     }
+    concerto.log("◀◀◀ .db.connect")
     return(con)
 }

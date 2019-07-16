@@ -1,10 +1,12 @@
 concerto.test.run <-
 function(testId, params=list(), extraReturns=c()) {
+    concerto.log("▶▶▶ .test.run")
     test <- concerto.test.get(testId, cache=F, includeSubObjects=T)
     if (is.null(test)) stop(paste("Test #", testId, " not found!", sep = ''))
     concerto.log(paste0("running test #", test$id, ": ", test$name, " ..."), ".test.run ▶")
 
     getParams = function(params) {
+        concerto.log("▶▶▶ .test.run -> getParams")
         if (dim(test$variables)[1] > 0) {
             for (i in 1 : dim(test$variables)[1]) {
                 if (!is.null(test$variables[i, "value"]) &&
@@ -43,6 +45,7 @@ function(testId, params=list(), extraReturns=c()) {
         if(!(".dynamicInputs" %in% ls(params, all.names=T))) { params[".dynamicInputs"] = list(NULL) }
         if(!(".dynamicReturns" %in% ls(params, all.names=T))) { params[".dynamicReturns"] = list(NULL) }
         if(!(".dynamicBranches" %in% ls(params, all.names=T))) { params[".dynamicBranches"] = list(NULL) }
+        concerto.log("◀◀◀ .test.run -> getParams")
         return(params)
     }
 
@@ -79,17 +82,21 @@ function(testId, params=list(), extraReturns=c()) {
 
     if (test$type == 1) {
         #wizard
+        concerto.log(".test.run ... #wizard <- if (test$type == 1)")
+        concerto.log("◀◀◀ .test.run : if (test$type == 1)")
         return(concerto.test.run(test$sourceTest$id, params, extraReturns))
     } else if (test$type == 0) {
         #code
-
+        concerto.log(".test.run ... #code <- if (test$type == 0)")
         getCodeTestEnv = function(params) {
+            concerto.log("▶▶▶ .test.run -> getCodeTestEnv")
             testenv = new.env()
             if (length(params) > 0) {
                 for (param in ls(params, all.names=T)) {
                     assign(param, params[[param]], envir = testenv)
                 }
             }
+            concerto.log("◀◀◀ .test.run -> getCodeTestEnv")
             return(testenv)
         }
 
@@ -115,12 +122,21 @@ function(testId, params=list(), extraReturns=c()) {
         }
     } else {
         #flow
+        concerto.log(".test.run ... #flow <- if(test$type != 0,1)")
         isGetterNode = function(node){
-            if (node$type != 0) return(F)
+            concerto.log("▶▶▶ .test.run -> isGetterNode")
+            if (node$type != 0) {
+              concerto.log("◀◀◀ .test.run -> isGetterNode : if (node$type != 0)")
+              return(F)
+            }
             for (port_id in ls(concerto$flow[[flowIndex]]$ports)) {
                 port = concerto$flow[[flowIndex]]$ports[[as.character(port_id)]]
-                if (port$node_id == node$id && port$type == 2) return(F)
+                if (port$node_id == node$id && port$type == 2) {
+                  concerto.log("◀◀◀ .test.run -> isGetterNode : if (port$node_id == node$id && port$type == 2)")
+                  return(F)
+                }
             }
+            concerto.log("◀◀◀ .test.run -> isGetterNode")
             return(T)
         }
 
@@ -129,6 +145,7 @@ function(testId, params=list(), extraReturns=c()) {
             if(port$pointer == 1) {
                 pointerValue = c.get(port$pointerVariable)
                 if(!is.null(pointerValue)) {
+                    concerto.log("◀◀◀ .test.run : if(!is.null(pointerValue))")
                     return(pointerValue)
                 }
             } else {
@@ -139,9 +156,11 @@ function(testId, params=list(), extraReturns=c()) {
                         port_connected = TRUE
 
                         #check for getter node
+                        concerto.log(".test.run ... #check for getter node")
                         source_node = concerto$flow[[flowIndex]]$nodes[[as.character(connection$sourceNode_id)]]
                         if (isGetterNode(source_node)) {
                             #getters shouldn't be resumable
+                            concerto.log(".test.run ... #getters shouldn't be resumable")
                             runNode(source_node)
                             port = concerto$flow[[flowIndex]]$ports[[as.character(port$id)]]
                             value = port$value
@@ -151,6 +170,7 @@ function(testId, params=list(), extraReturns=c()) {
                 }
 
                 if (port_connected) {
+                    concerto.log("◀◀◀ .test.run : if (port_connected)")
                     return(value)
                 }
             }
@@ -160,14 +180,17 @@ function(testId, params=list(), extraReturns=c()) {
                 for(insertName in ls(inserts)) {
                     assign(insertName, inserts[[insertName]], envir=portEnv)
                 }
+                concerto.log("◀◀◀ .test.run : if (port$string == 0)")
                 return(eval(parse(text = value), envir=portEnv))
             } else {
                 value = concerto.template.insertParams(value, inserts, removeMissing=F)
+                concerto.log("◀◀◀ .test.run : if (port$string != 0)")
                 return(value)
             }
         }
 
         runNode = function(node){
+            concerto.log("▶▶▶ .test.run -> runNode")
             r = list()
 
             #PARAMS
@@ -300,6 +323,7 @@ function(testId, params=list(), extraReturns=c()) {
                 eval(parse(text = func))
                 concerto$flow[[flowIndex]]$ports[[as.character(connection$destinationPort_id)]]$value <<- retFunc(concerto$flow[[flowIndex]]$ports[[as.character(connection$sourcePort_id)]]$value)
             }
+            concerto.log("◀◀◀ .test.run -> runNode")
             return(r)
         }
 
@@ -365,5 +389,6 @@ function(testId, params=list(), extraReturns=c()) {
     concerto$flow[[flowIndex]] <<- NULL
 
     concerto.log(paste0("test #", test$id, ": ", test$name, " finished"), ".test.run ▶")
+    concerto.log("◀◀◀ .test.run")
     return(r)
 }

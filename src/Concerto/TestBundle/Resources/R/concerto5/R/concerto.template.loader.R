@@ -1,12 +1,13 @@
 concerto.template.loader <-
 function(
-    templateId=-1, 
-    html="", 
-    head="", 
+    templateId=-1,
+    html="",
+    head="",
     params=list()){
+  concerto.log("▶▶▶ .template.loader")
   if(!is.list(params)) stop("'params' must be a list!")
   if(templateId==-1 && html=="") stop("templateId or html must be declared")
-  
+
   template <- concerto.template.get(templateId)
 
   if(html!=""){
@@ -29,4 +30,5 @@ function(
       concerto$templateParams[[name]] <<- params[[name]]
     }
   }
+  concerto.log("◀◀◀ .template.loader")
 }

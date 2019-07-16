@@ -1,4 +1,5 @@
 concerto.run = function(workingDir, client, sessionHash, maxIdleTime = NULL, maxExecTime = NULL, response = NULL, initialPort = NULL) {
+    concerto.log("▶▶▶::: .run")
     concerto$workingDir <<- workingDir
     concerto$client <<- client
     concerto$sessionHash <<- sessionHash
@@ -54,4 +55,5 @@ concerto.run = function(workingDir, client, sessionHash, maxIdleTime = NULL, max
         if(!is.null(concerto$session)) { concerto$session$error <<- e }
         concerto5:::concerto.session.stop(STATUS_ERROR, RESPONSE_ERROR)
     })
+    concerto.log("◀◀◀::: .run")
 }

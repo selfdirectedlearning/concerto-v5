@@ -1,5 +1,6 @@
 concerto.test.getPorts = function(testId){
-  
+  concerto.log("▶▶▶ .getPorts")
+
   idField <- "flowTest_id"
   testId <- dbEscapeStrings(concerto$connection,toString(testId))
 
@@ -15,12 +16,13 @@ concerto.test.getPorts = function(testId){
   dynamic,
   pointer,
   pointerVariable
-  FROM TestNodePort 
+  FROM TestNodePort
   LEFT JOIN TestNode ON TestNode.id = TestNodePort.node_id
   WHERE %s='%s'
   ",idField,testId))
 
   response <- fetch(result,n=-1)
 
+  concerto.log("◀◀◀ .getPorts")
   return(response)
 }

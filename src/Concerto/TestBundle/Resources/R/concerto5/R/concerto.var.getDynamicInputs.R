@@ -1,4 +1,5 @@
 concerto.var.getDynamicInputs = c.getDynamicInputs = function(){
+    concerto.log("▶▶▶ .getDynamicInputs")
     result = list()
     flowIndex = length(concerto$flow)
     dynamicInputs = concerto$flow[[flowIndex]]$globals$.dynamicInputs
@@ -8,5 +9,6 @@ concerto.var.getDynamicInputs = c.getDynamicInputs = function(){
             result[[name]] = concerto$flow[[flowIndex]]$globals[[name]]
         }
     }
+    concerto.log("◀◀◀ .getDynamicInputs")
     return(result)
 }

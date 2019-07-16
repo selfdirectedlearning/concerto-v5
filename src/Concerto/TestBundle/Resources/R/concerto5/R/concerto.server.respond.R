@@ -1,4 +1,5 @@
 concerto.server.respond = function(response, data=list()){
+  concerto.log("▶▶▶ .server.respond")
   concerto.log("responding to server...", ".respond ▶")
 
   port = concerto$initialPort
@@ -24,4 +25,5 @@ concerto.server.respond = function(response, data=list()){
   writeLines(paste(toJSON(response),"\n",sep=''),con)
   close(con)
   concerto.log("responded to server", ".respond ▶")
+  concerto.log("◀◀◀ .server.respond")
 }

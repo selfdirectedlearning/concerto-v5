@@ -1,5 +1,5 @@
 concerto.session.unserialize <- function(response = NULL, hash = NULL){
-    concerto.log("▶▶▶ .session.unserialize")
+    concerto.log(" - - - - - - - - - - - - - - - ▶▶▶ .session.unserialize")
     concerto.log("unserializing session...", ".unserialize ▶")
 
     sessionFileName = concerto$sessionFile
@@ -9,7 +9,7 @@ concerto.session.unserialize <- function(response = NULL, hash = NULL){
 
     if(!file.exists(sessionFileName)) {
         concerto.log(sessionFileName, ".unserialize: session file not found ▶")
-        concerto.log("◀◀◀ .session.unserialize : if(!file.exists(sessionFileName))")
+        concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .session.unserialize : if(!file.exists(sessionFileName))")
         return(F)
     }
 
@@ -56,6 +56,6 @@ concerto.session.unserialize <- function(response = NULL, hash = NULL){
         concerto5:::concerto.session.stop(STATUS_RUNNING)
     }
 
-    concerto.log("◀◀◀ .session.unserialize")
+    concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .session.unserialize")
     return(T)
 }

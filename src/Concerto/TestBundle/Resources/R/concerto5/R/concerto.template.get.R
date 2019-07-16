@@ -1,8 +1,8 @@
 concerto.template.get = function(templateId, cache=F){
-  concerto.log("▶▶▶ .template.get")
+  concerto.log(" - - - - - - - - - - - - - - - ▶▶▶ .template.get")
 
   if(!is.null(concerto$cache$templates[[as.character(templateId)]])) {
-    concerto.log("◀◀◀ .template.get : if(!is.null(concerto$cache$templates[[as.character(templateId)]]))")
+    concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .template.get : if(!is.null(concerto$cache$templates[[as.character(templateId)]]))")
     return(concerto$cache$templates[[as.character(templateId)]])
   }
 
@@ -21,10 +21,10 @@ concerto.template.get = function(templateId, cache=F){
         concerto$cache$templates[[as.character(response$id)]] <<- template
         concerto$cache$templates[[response$name]] <<- template
     }
-    concerto.log("◀◀◀ .template.get : if(dim(response)[1] > 0)")
+    concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .template.get : if(dim(response)[1] > 0)")
     return(template)
   }
 
-  concerto.log("◀◀◀ .template.get")
+  concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .template.get")
   return(NULL)
 }

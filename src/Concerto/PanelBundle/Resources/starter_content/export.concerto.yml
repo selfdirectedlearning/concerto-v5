@@ -2724,7 +2724,7 @@ collection:
     visibility: 2
     type: 0
     code: |
-      concerto.log("▷▷▷ _authorizeUser")
+      concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _authorizeUser")
       library(digest)
 
       resultCode = 0
@@ -2927,7 +2927,7 @@ collection:
     visibility: 2
     type: 0
     code: |
-      concerto.log("▷▷▷ createList")
+      concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ createList")
       result = list()
       if(is.list(sourceList)) {
         result = sourceList
@@ -4353,7 +4353,7 @@ collection:
             class_name: TestNodePort
             id: 1086
             value: |
-              concerto.log("▷▷▷ _CAT : eval@initialization")
+              concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _CAT : eval@initialization")
               getItems = function(itemBankType, itemBankItems, itemBankTable){
                 items = NULL
                 if(itemBankType == "table") {
@@ -4687,7 +4687,7 @@ collection:
             class_name: TestNodePort
             id: 1099
             value: |
-              concerto.log("▷▷▷ _CAT : eval@next_item_selector")
+              concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _CAT : eval@next_item_selector")
               library(catR)
 
               getSafeItem = function(item) {
@@ -4975,7 +4975,7 @@ collection:
             class_name: TestNodePort
             id: 1112
             value: |
-              concerto.log("▷▷▷ _CAT : eval@show_item")
+              concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _CAT : eval@show_item")
               getTemplateParams = function(itemSafe, templateParams, responseRequired, responseRequiredAlert) {
                 templateParams$items = data.frame(itemSafe)
                 templateParams$responseRequired = responseRequired
@@ -5259,7 +5259,7 @@ collection:
             class_name: TestNodePort
             id: 1125
             value: |
-              concerto.log("▷▷▷ _CAT : eval@scoring")
+              concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _CAT : eval@scoring")
               library(catR)
 
               getResponseCatValue = function(item, response) {
@@ -5566,7 +5566,7 @@ collection:
             class_name: TestNodePort
             id: 1143
             value: |
-              concerto.log("▷▷▷ _CAT : eval@response_processor")
+              concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _CAT : eval@response_processor")
               getSessionId = function(session) {
                 id = 0
                 if(!is.null(session) && is.list(session)) {
@@ -5861,7 +5861,7 @@ collection:
             class_name: TestNodePort
             id: 1157
             value: |
-              concerto.log("▷▷▷ _CAT : eval@status_check")
+              concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _CAT : eval@status_check")
               isOutOfTime = function(testTimeLimit, testTimeStarted, itemTimeLimit, itemTimeFullRequired) {
                 startedAgo = as.numeric(Sys.time()) - testTimeStarted
                 testTimeLeft = testTimeLimit - startedAgo
@@ -7767,7 +7767,7 @@ collection:
     visibility: 2
     type: 0
     code: |
-      concerto.log("▷▷▷ _createUser")
+      concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _createUser")
       library(digest)
 
       formatFields = function(login, password, userBankEncryption, enabled, extraFields) {
@@ -7970,7 +7970,7 @@ collection:
     visibility: 2
     type: 0
     code: |
-      concerto.log("▷▷▷ _dataManipulation")
+      concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _dataManipulation")
       getWhereClause = function(where, type) {
         if((is.na(where) || where == "") && type != "update") {
           elems = NULL
@@ -8189,7 +8189,7 @@ collection:
     visibility: 2
     type: 0
     code: |
-      concerto.log("▷▷▷ _form")
+      concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _form")
       getTemplateParams = function(templateParams, fields, initialValues) {
         if(!is.list(templateParams)) {
           templateParams = list()
@@ -9236,7 +9236,7 @@ collection:
             class_name: TestNodePort
             id: 1169
             value: |
-              concerto.log("▷▷▷ _linearTest : eval@initialization")
+              concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _linearTest : eval@initialization")
               getItems = function(itemBankType, itemBankItems, itemBankTable, order){
                 items = NULL
                 if(itemBankType == "table") {
@@ -9483,7 +9483,7 @@ collection:
             class_name: TestNodePort
             id: 1179
             value: |
-              concerto.log("▷▷▷ linearTest : eval@next_item_selector")
+              concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ linearTest : eval@next_item_selector")
               getSessionId = function(session) {
                 id = 0
                 if(!is.null(session) && is.list(session)) {
@@ -9815,7 +9815,7 @@ collection:
             class_name: TestNodePort
             id: 1193
             value: |
-              concerto.log("▷▷▷ _linearTest : eval@show_item")
+              concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _linearTest : eval@show_item")
               getData = function(itemsSafe, responsesSafe, canGoBack, templateParams, responseRequired, responseRequiredAlert, page, totalPages) {
                 templateParams$items = itemsSafe
                 templateParams$canGoBack = canGoBack
@@ -10152,7 +10152,7 @@ collection:
             class_name: TestNodePort
             id: 1209
             value: |
-              concerto.log("▷▷▷ _linearTest : eval@scoring")
+              concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _linearTest : eval@scoring")
               updateScores = function(templateResponse, currentItems, currentItemsIndices, scores) {
                 for(i in 1:dim(currentItems)[1]) {
                   score = 0
@@ -10436,7 +10436,7 @@ collection:
             class_name: TestNodePort
             id: 1222
             value: |
-              concerto.log("▷▷▷ _linearTest : eval@response_processor")
+              concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _linearTest : eval@response_processor")
               getSessionId = function(session) {
                 id = 0
                 if(!is.null(session) && is.list(session)) {
@@ -10760,7 +10760,7 @@ collection:
             class_name: TestNodePort
             id: 1235
             value: |
-              concerto.log("▷▷▷ _linearTest : eval@status_check")
+              concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _linearTest : eval@status_check")
               isOutOfTime = function(testTimeLimit, testTimeStarted, itemTimeLimit, itemTimeFullRequired) {
                 startedAgo = as.numeric(Sys.time()) - testTimeStarted
                 testTimeLeft = testTimeLimit - startedAgo
@@ -12169,7 +12169,7 @@ collection:
     visibility: 2
     type: 0
     code: |
-      concerto.log("▷▷▷ _nestedPageHtml")
+      concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _nestedPageHtml")
       if(!is.list(params)) {
         params = list()
       }
@@ -12258,7 +12258,7 @@ collection:
     visibility: 2
     type: 0
     code: |
-      concerto.log("▷▷▷ _runTest")
+      concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _runTest")
       if(!is.list(params)) {
         params = list()
       }
@@ -12335,7 +12335,7 @@ collection:
     visibility: 2
     type: 0
     code: |
-      concerto.log("▷▷▷ _setInternalTemplates")
+      concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _setInternalTemplates")
       if(!is.list(params)) {
         params = list()
       }
@@ -12396,7 +12396,7 @@ collection:
     visibility: 2
     type: 0
     code: |
-      concerto.log("▷▷▷ _showPage")
+      concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _showPage")
       getTemplateParams = function(templateParams) {
         if(!is.list(templateParams)) {
           templateParams = list()
@@ -12501,7 +12501,7 @@ collection:
     visibility: 2
     type: 0
     code: |
-      concerto.log("▷▷▷ _startSession")
+      concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _startSession")
       concerto.log(user, "_startSession ▷ user")
 
       formatFields = function(user, extraFields) {
@@ -12716,7 +12716,7 @@ collection:
     visibility: 2
     type: 0
     code: |
-      concerto.log("▷▷▷ _translationDictionary")
+      concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ _translationDictionary")
       selectedLanguage = language
       if(is.na(language)) { selectedLanguage = defaultLanguage }
 
@@ -14973,7 +14973,7 @@ collection:
     visibility: 2
     type: 0
     code: |
-      concerto.log("▷▷▷ get")
+      concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ get")
       for(.name in .dynamicReturns) {
         assign(.name, c.get(.name, posOffset = -1))
       }
@@ -14997,7 +14997,7 @@ collection:
     visibility: 2
     type: 0
     code: |
-      concerto.log("▷▷▷ if")
+      concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ if")
       .branch = "false"
       if(expression) { .branch = "true" }
 
@@ -16022,7 +16022,7 @@ collection:
     visibility: 2
     type: 0
     code: |
-      concerto.log("▷▷▷ set")
+      concerto.log(" - - - - - - - - - - - - - - - ▷▷▷ set")
       for(.name in .dynamicInputs) {
         c.set(.name, get(.name), posOffset = -1)
       }

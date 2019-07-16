@@ -1,5 +1,5 @@
 concerto.test.getConnections = function(testId){
-  concerto.log("▶▶▶ .getConnections")
+  concerto.log(" - - - - - - - - - - - - - - - ▶▶▶ .getConnections")
 
   idField <- "flowTest_id"
   testId <- dbEscapeStrings(concerto$connection,toString(testId))
@@ -9,6 +9,6 @@ concerto.test.getConnections = function(testId){
     WHERE %s='%s'",idField,testId))
   response <- fetch(result,n=-1)
 
-  concerto.log("◀◀◀ .getConnections")
+  concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .getConnections")
   return(response)
 }

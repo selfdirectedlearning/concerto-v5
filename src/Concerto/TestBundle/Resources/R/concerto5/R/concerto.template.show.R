@@ -7,11 +7,11 @@ timeLimit=0,
 finalize=F,
 removeMissingParams=T,
 bgWorkers=list()) {
-    concerto.log("▶▶▶ .template.show")
+    concerto.log(" - - - - - - - - - - - - - - - ▶▶▶ .template.show")
     if (! is.null(concerto$queuedResponse)) {
         response = concerto$queuedResponse
         concerto$queuedResponse <<- NULL
-        concerto.log("◀◀◀ .template.show : if(!is.null(concerto$queuedResponse))")
+        concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .template.show : if(!is.null(concerto$queuedResponse))")
         return(response)
     }
 
@@ -62,8 +62,8 @@ bgWorkers=list()) {
             concerto5:::concerto.session.serialize()
             concerto5:::concerto.session.stop(STATUS_RUNNING)
         }
-        concerto.log("◀◀◀ .template.show : if (finalize)")
+        concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .template.show : if (finalize)")
         return(concerto5:::concerto.server.listen())
     }
-    concerto.log("◀◀◀ .template.show")
+    concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .template.show")
 }

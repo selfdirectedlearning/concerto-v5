@@ -1,6 +1,6 @@
 concerto.table.insertParams <-
 function(sql,params=list()){
-  concerto.log("▶▶▶ .table.insertParams")
+  concerto.log(" - - - - - - - - - - - - - - - ▶▶▶ .table.insertParams")
   matches <- unlist(regmatches(sql,gregexpr("\\{\\{[^\\}\\}]*\\}\\}",sql)))
   while(length(matches)>0){
     index <- 1
@@ -18,6 +18,6 @@ function(sql,params=list()){
     }
     matches <- unlist(regmatches(sql,gregexpr("\\{\\{[^\\}\\}]*\\}\\}",sql)))
   }
-  concerto.log("◀◀◀ .table.insertParams")
+  concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .table.insertParams")
   return(sql)
 }

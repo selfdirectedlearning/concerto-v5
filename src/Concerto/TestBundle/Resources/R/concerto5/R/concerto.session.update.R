@@ -1,5 +1,5 @@
 concerto.session.update = function(){
-  concerto.log("▶▶▶ .session.update")
+  concerto.log(" - - - - - - - - - - - - - - - ▶▶▶ .session.update")
   concerto.log("updating session...", ".update ▶")
 
   sql = sprintf("UPDATE TestSession SET
@@ -14,5 +14,5 @@ concerto.session.update = function(){
 
   res = dbSendStatement(concerto$connection, statement = sql)
   dbClearResult(res)
-  concerto.log("◀◀◀ .session.update")
+  concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .session.update")
 }

@@ -1,5 +1,5 @@
 concerto.trans = c.trans = function(key){
-    concerto.log("▶▶▶| .trans")
+    concerto.log(" - - - - - - - - - - - - - - - ▶▶▶| .trans")
     dictionary = c.get("dictionary", global=T)
     if(is.null(dictionary)) { return(key) }
     dictionaryLength = dim(dictionary)[1]

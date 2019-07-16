@@ -1,5 +1,5 @@
 concerto.session.stop <- function(status = STATUS_STOPPED, response = NULL, data=list()){
-    concerto.log("▶▶▶ .session.stop")
+    concerto.log(" - - - - - - - - - - - - - - - ▶▶▶ .session.stop")
     concerto.log("stopping session...", ".stop ▶")
     concerto.log(paste0("status: ", status), ".stop ▶")
 
@@ -13,5 +13,5 @@ concerto.session.stop <- function(status = STATUS_STOPPED, response = NULL, data
         concerto5:::concerto.server.respond(response, data)
     }
     q("no", if(status == STATUS_ERROR) 1 else 0)
-    concerto.log("◀◀◀ .session.stop")
+    concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .session.stop")
 }

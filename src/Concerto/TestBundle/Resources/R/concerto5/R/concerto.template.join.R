@@ -1,5 +1,5 @@
 concerto.template.join = function(html="", css="", js="", templateId=NULL, params=list()){
-    concerto.log("▶▶▶ .template.join")
+    concerto.log(" - - - - - - - - - - - - - - - ▶▶▶ .template.join")
     if (! is.list(params)) stop("'params' must be a list!")
     if (! is.null(templateId)) {
         template = concerto.template.get(templateId)
@@ -18,6 +18,6 @@ concerto.template.join = function(html="", css="", js="", templateId=NULL, param
     if (! is.null(js) && js != "") {
         result = paste0(result, "<script>", concerto.template.insertParams(js, params, F), "</script>")
     }
-    concerto.log("◀◀◀ .template.join")
+    concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .template.join")
     return(result)
 }

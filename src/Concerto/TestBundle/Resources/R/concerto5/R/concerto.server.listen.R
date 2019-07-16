@@ -1,5 +1,5 @@
 concerto.server.listen = function(){
-    concerto.log("▶▶▶ .server.listen")
+    concerto.log(" - - - - - - - - - - - - - - - ▶▶▶ .server.listen")
     repeat {
         concerto.log("listening to server...", ".listen ▶")
 
@@ -60,7 +60,7 @@ concerto.server.listen = function(){
             if(exists("concerto.onTemplateSubmit")) {
                 do.call("concerto.onTemplateSubmit",list(response=response$values), envir = .GlobalEnv)
             }
-            concerto.log("◀◀◀ .server.listen : if(exists(concerto.onTemplateSubmit))")
+            concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .server.listen : if(exists(concerto.onTemplateSubmit))")
             return(response$values)
         } else if(response$code == RESPONSE_KEEPALIVE_CHECKIN) {
             concerto.log("keep alive checkin", ".listen ▶")

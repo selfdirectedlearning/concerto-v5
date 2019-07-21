@@ -1,6 +1,6 @@
 concerto.table.query <-
 function(sql, params=list(), n=-1){
-  concerto.log(" - - - - - - - - - - - - - - - ▶▶▶ .table.query")
+  concerto.log(" - - - - - - - - - - - - - - - - - ▶▶▶ .table.query")
   sql <- gsub("^\\s+|\\s+$", "", sql)
   sql <- concerto.table.insertParams(sql, params)
 
@@ -27,6 +27,6 @@ function(sql, params=list(), n=-1){
 
   dbClearResult(result)
 
-  concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .table.query")
+  concerto.log(" - - - - - - - - - - - - - - - - - ◀◀◀ .table.query")
   return(output)
 }

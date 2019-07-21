@@ -1,5 +1,5 @@
 concerto.init = function(connectionParams, publicDir, mediaUrl, maxExecTime, maxIdleTime, keepAliveToleranceTime, runnerType = 0){
-    concerto.log(" - - - - - - - - - - - - - - - ▶▶▶::: .init")
+    concerto.log(" - - - - - - - - - - - - - - - - - ▶▶▶::: .init")
     options(digits.secs = 6)
     concerto.log("starting session", ".init ▶")
     if(Sys.info()['sysname'] != "Windows") {
@@ -67,5 +67,5 @@ concerto.init = function(connectionParams, publicDir, mediaUrl, maxExecTime, max
     concerto$connectionParams <<- connectionParams
     concerto$runnerType <<- runnerType
 
-    concerto.log(" - - - - - - - - - - - - - - - ◀◀◀::: .init")
+    concerto.log(" - - - - - - - - - - - - - - - - - ◀◀◀::: .init")
 }

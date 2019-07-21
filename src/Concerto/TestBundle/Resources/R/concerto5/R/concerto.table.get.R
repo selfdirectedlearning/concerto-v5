@@ -1,8 +1,8 @@
 concerto.table.get <-
 function(tableId, cache=F){
-  concerto.log(" - - - - - - - - - - - - - - - ▶▶▶ .table.get")
+  concerto.log(" - - - - - - - - - - - - - - - - - ▶▶▶ .table.get")
   if(!is.null(concerto$cache$tables[[as.character(tableId)]])) {
-    concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .table.get : if(!is.null(concerto$cache$tables[[as.character(tableId)]]))")
+    concerto.log(" - - - - - - - - - - - - - - - - - ◀◀◀ .table.get : if(!is.null(concerto$cache$tables[[as.character(tableId)]]))")
     return(concerto$cache$tables[[as.character(tableId)]])
   }
 
@@ -21,10 +21,10 @@ function(tableId, cache=F){
         concerto$cache$tables[[as.character(response$id)]] <<- table
         concerto$cache$tables[[response$name]] <<- table
     }
-    concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .table.get : if(dim(response)[1] > 0)")
+    concerto.log(" - - - - - - - - - - - - - - - - - ◀◀◀ .table.get : if(dim(response)[1] > 0)")
     return(table)
   }
 
-  concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .table.get")
+  concerto.log(" - - - - - - - - - - - - - - - - - ◀◀◀ .table.get")
   return(NULL)
 }

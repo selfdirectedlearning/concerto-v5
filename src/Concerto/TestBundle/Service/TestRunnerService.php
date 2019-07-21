@@ -22,6 +22,7 @@ class TestRunnerService {
 
         $response = $this->sessionService->startNewSession($test_slug, $test_name, $params, $client_ip, $client_browser, $debug);
         $response = json_encode($response);
+        $this->logger->info(__CLASS__ . ":" . __FUNCTION__ . " - params: $params");
         $this->logger->info(__CLASS__ . ":" . __FUNCTION__ . " - response: $response");
         return $response;
     }

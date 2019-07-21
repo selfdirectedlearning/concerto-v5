@@ -4,7 +4,7 @@ function(
     html="",
     head="",
     params=list()){
-  concerto.log(" - - - - - - - - - - - - - - - ▶▶▶ .template.loader")
+  concerto.log(" - - - - - - - - - - - - - - - - - ▶▶▶ .template.loader")
   if(!is.list(params)) stop("'params' must be a list!")
   if(templateId==-1 && html=="") stop("templateId or html must be declared")
 
@@ -30,5 +30,5 @@ function(
       concerto$templateParams[[name]] <<- params[[name]]
     }
   }
-  concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .template.loader")
+  concerto.log(" - - - - - - - - - - - - - - - - - ◀◀◀ .template.loader")
 }

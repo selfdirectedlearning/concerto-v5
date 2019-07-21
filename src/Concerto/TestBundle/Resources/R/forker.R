@@ -1,6 +1,6 @@
 require(concerto5)
 require(parallel)
-concerto.log(" - - - - - - - - - - - - - - - ▶▶▶ forker.R")
+concerto.log(" - - - - - - - - - - - - - - - - - ▶▶▶ forker.R")
 
 concerto5:::concerto.init(
     connectionParams = fromJSON(commandArgs(TRUE)[4]),
@@ -72,4 +72,4 @@ while (T) {
     }, detached = TRUE)
 }
 concerto.log("listener closing", "forker.R ▶")
-concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ forker.R")
+concerto.log(" - - - - - - - - - - - - - - - - - ◀◀◀ forker.R")

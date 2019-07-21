@@ -1,5 +1,5 @@
 concerto.session.get = function(sessionHash){
-  concerto.log(" - - - - - - - - - - - - - - - ▶▶▶ .session.get")
+  concerto.log(" - - - - - - - - - - - - - - - - - ▶▶▶ .session.get")
   sessionHash <- dbEscapeStrings(concerto$connection,toString(sessionHash))
   result <- dbSendQuery(concerto$connection,sprintf("SELECT
                                                     id,
@@ -15,6 +15,6 @@ concerto.session.get = function(sessionHash){
                                                     FROM TestSession WHERE hash='%s'",sessionHash))
   response <- fetch(result,n=-1)
   concerto.log(response,".session.get : response")
-  concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .session.get")
+  concerto.log(" - - - - - - - - - - - - - - - - - ◀◀◀ .session.get")
   return(response)
 }

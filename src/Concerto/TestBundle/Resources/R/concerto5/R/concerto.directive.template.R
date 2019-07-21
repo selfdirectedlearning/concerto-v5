@@ -1,5 +1,5 @@
 concerto.directive.template = function(args, params){
-    concerto.log(" - - - - - - - - - - - - - - - ▶▶▶ .directive.template")
+    concerto.log(" - - - - - - - - - - - - - - - - - ▶▶▶ .directive.template")
     args = strsplit(args, ",")[[1]]
     name = args[1]
     opts = list()
@@ -25,6 +25,6 @@ concerto.directive.template = function(args, params){
     if (Sys.info()['sysname'] == "Windows") {
         if (Encoding(insert) == "UTF-8") { insert = enc2native(insert)}
     }
-    concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .directive.template")
+    concerto.log(" - - - - - - - - - - - - - - - - - ◀◀◀ .directive.template")
     return(insert)
 }

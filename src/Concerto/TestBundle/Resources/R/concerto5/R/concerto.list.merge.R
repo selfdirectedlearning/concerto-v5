@@ -1,5 +1,5 @@
 concerto.list.merge = function(list1,list2){
-    concerto.log(" - - - - - - - - - - - - - - - ▶▶▶ .list.merge")
+    concerto.log(" - - - - - - - - - - - - - - - - - ▶▶▶ .list.merge")
     if(!is.list(list1)) stop("'list1' must be a list!")
     if(!is.list(list2)) stop("'list2' must be a list!")
 
@@ -7,6 +7,6 @@ concerto.list.merge = function(list1,list2){
     for(key in ls(list2)) {
         res[[key]] = list2[[key]]
     }
-    concerto.log(" - - - - - - - - - - - - - - - ◀◀◀ .list.merge")
+    concerto.log(" - - - - - - - - - - - - - - - - - ◀◀◀ .list.merge")
     return(res)
 }

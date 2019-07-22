@@ -45,7 +45,7 @@ function(testId, params=list(), extraReturns=c()) {
         if(!(".dynamicInputs" %in% ls(params, all.names=T))) { params[".dynamicInputs"] = list(NULL) }
         if(!(".dynamicReturns" %in% ls(params, all.names=T))) { params[".dynamicReturns"] = list(NULL) }
         if(!(".dynamicBranches" %in% ls(params, all.names=T))) { params[".dynamicBranches"] = list(NULL) }
-        concerto.log(params, ".test.run -> getParams : params")
+        concerto.log(toJSON(params), ".test.run -> getParams : params")
         concerto.log(" - - - - - - - - - - - - - - - - - ◀◀◀ .test.run -> getParams")
         return(params)
     }

@@ -34,9 +34,15 @@ class RunTestCommand extends Command
 
         $result = $this->sessionService->startNewSession(null, $name, $params, "CLI", "CLI", true, 0);
         if (array_key_exists("debug", $result)) {
+            $output->writeln("result[debug]");
             $output->writeln($result["debug"]);
-        } else {
+            $output->writeln("json_encode(result)");
             $output->writeln(json_encode($result));
+        } else {
+            $output->writeln("json_encode(result)");
+            $output->writeln(json_encode($result));
+            $output->writeln("result[debug]");
+            $output->writeln($result["debug"]);
         }
     }
 

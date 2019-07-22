@@ -38,6 +38,7 @@ class RunTestCommand extends Command
             $output->writeln($result["debug"]);
             $output->writeln("json_encode(result)");
             $output->writeln(json_encode($result));
+            $output->writeln($result);
         } else {
             $output->writeln("json_encode(result)");
             $output->writeln(json_encode($result));

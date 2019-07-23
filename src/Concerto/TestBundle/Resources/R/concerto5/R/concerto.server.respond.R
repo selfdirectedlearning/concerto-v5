@@ -22,6 +22,7 @@ concerto.server.respond = function(response, data=list()){
   }
   con = socketConnection(host="localhost", port=port)
   response = list("source"=SOURCE_PROCESS, "code"=response, "data"=data)
+  concerto.log(unlist(response), ".respond ▶ response to be sent to server")
   writeLines(paste(toJSON(response),"\n",sep=''),con)
   close(con)
   concerto.log("responded to server", ".respond ▶")
